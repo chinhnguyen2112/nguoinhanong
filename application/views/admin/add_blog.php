@@ -150,6 +150,18 @@
         font-size: 12px !important;
     }
 
+    .select_box {
+        float: right;
+        margin-bottom: 15px;
+    }
+    .select_box select {
+        padding: 5px;
+        margin-left: 5px;
+    }
+    .select_box option {
+        padding: 3px;
+    }
+
     @media only screen and (max-width: 1024px) {
         .form_change_pass {
             width: 100%;
@@ -221,6 +233,13 @@
     <div class="form-group mb-3">
         <label class="label" for="name">Nội dung</label>
         <textarea name="content" id="editor"><?= (isset($blog) && $blog['content'] != '') ? $blog['content'] : '' ?></textarea>
+    </div>
+    <div class="select_box">
+        <label>Chọn Kiểu</label>
+            <select id="type" name="type">
+                <option value="0">Blog</option>
+                <option value="1">Page</option>
+            </select>
     </div>
     <div class="form-group">
         <button type="submit" class="form-control btn btn-primary submit px-3"><?= (isset($id)) ? "Sửa" : "Thêm mới" ?></button>
@@ -306,7 +325,7 @@
             },
             "meta_des": {
                 required: "Chưa nhập description",
-            },
+            }, 
         },
         submitHandler: function(form) {
             var data = new FormData($("#form")[0]);

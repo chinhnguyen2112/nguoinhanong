@@ -31,7 +31,8 @@ class Home extends CI_Controller
     public function home()
     {
         $data['canonical'] = base_url();
-        $data['blog'] = $this->Madmin->get_limit('', 'blogs', 0, 5);
+        $where['type'] = 0;
+        $data['blog'] = $this->Madmin->get_limit($where, 'blogs', 0, 5);
         $data['meta_title'] = 'VnEspost - Kết nối thông tin kiến thức nền tảng Game Online';
         $data['content'] = 'home';
         $data['list_js'] = [

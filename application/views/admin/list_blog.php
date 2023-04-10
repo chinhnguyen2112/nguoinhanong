@@ -185,6 +185,7 @@
                                         <th>Xem tin</th>
                                         <th>Chuyên mục</th>
                                         <th style="width:300px">Tags</th>
+                                        <th style="width:50px">Type</th>
                                         <th>Ngày đăng</th>
                                     </tr>
                                 </thead>
@@ -219,6 +220,18 @@
                                                         }
                                                     }
                                                     ?></div>
+                                            </td>
+                                            <td style="width:50px">
+                                                    <!-- <span><?= $val['type']  ?></span> -->
+                                                    <span>
+                                                        <?php
+                                                            if($val['type'] == '0') {
+                                                                echo 'Blog';
+                                                            } else {
+                                                                echo 'Page';
+                                                            }
+                                                        ?>
+                                                    </span>
                                             </td>
                                             <td><?= date('d-m-Y', $val['created_at']) ?></td>
                                             <td class="text-center">

@@ -79,6 +79,8 @@
             $data['meta_title'] = $this->input->post('meta_title');
             $data['meta_key']     = $this->input->post('meta_key');
             $data['meta_des']     = $this->input->post('meta_des');
+            $data['type'] = $this->input->post('type');
+            
             $data['updated_at'] = $time;
             $cate = chuyen_muc(['id' => $chuyenmuc]);
             if ($cate[0]['parent'] > 0) {
