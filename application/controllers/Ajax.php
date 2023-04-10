@@ -15,7 +15,8 @@ class Ajax extends CI_Controller
     {
         $page = $this->input->post('page');
         $page = 5 * ($page - 1);
-        $blog = $this->Madmin->get_limit('', 'blogs', $page, 5);
+        $where['type'] = 0;
+        $blog = $this->Madmin->get_limit($where, 'blogs', $page, 5);
         $html = '';
         if ($blog != null) {
             foreach ($blog as $val) {
