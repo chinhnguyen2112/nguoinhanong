@@ -34,37 +34,37 @@
                 </div>
             </div>
         </div>
-        <div class="box_tag">
-            <p class="title_tag">Chủ đề:</p>
-            <?php $tag = explode(',', $blog['tag']);
-            foreach ($tag as $key_tag => $val) {
-                $this_tag = tag(['id' => $val]);
-                echo '<a href="/' . $this_tag[0]['alias'] . '/" class="this_tag">' . $this_tag[0]['name'] . '</a>';
-            } ?>
-
-
-        </div>
         <div class="line_blog"></div>
         <?php if ($blog_same != null) { ?>
-            <div class="blog_same">
-                <p class="title_blog_same">Tin liên quan</p>
-                <div class="list_blog_same">
-                    <?php
+        <div class="blog_same">
+            <p class="title_blog_same">Tin liên quan</p>
+            <div class="list_blog_same">
+                <?php
                     foreach ($blog_same as $val) { ?>
-                        <div class="this_handbook ">
-                            <a href="/<?= $val['alias'] ?>/">
-                                <img class="img_blog_same" src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
-                                <div class="data_handbook">
-                                    <p class="title_handbook"><?= $val['title'] ?></p>
-                                    <p class="date_post"><img src="/images/date.svg" alt="Ngày đăng"><span><?= date('d-m-Y', $val['created_at']) ?><span></p>
-                                    <div class="this_des_handbook"><?= $val['sapo'] ?></div>
-                                </div>
-                            </a>
+                <div class="this_handbook ">
+                    <a href="/<?= $val['alias'] ?>/">
+                        <img class="img_blog_same" src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
+                        <div class="data_handbook">
+                            <p class="title_handbook"><?= $val['title'] ?></p>
+                            <div class="this_des_handbook"><?= $val['sapo'] ?></div>
+                            <p class="date_post"><span><?= date('d-m-Y', $val['created_at']) ?><span></p>
                         </div>
-                    <?php
-                    } ?>
+                    </a>
                 </div>
+                <div class="this_handbook ">
+                    <a href="/<?= $val['alias'] ?>/">
+                        <img class="img_blog_same" src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
+                        <div class="data_handbook">
+                            <p class="title_handbook"><?= $val['title'] ?></p>
+                            <div class="this_des_handbook">Với sứ mệnh rõ ràng, Người Nhà Nông tập trung chia sẻ những thông tin hữu ích, cần thiết một cách nhanh chóng và mới nhất về canh tác nông nghiệp, thời vụ mùa màng đến bà con nông dân để đạt năng suất cao giúp phát triển kinh tế. Bên cạnh đó, những người yêu thích làm vườn cũng có thể tìm thấy nhiều thông tin bổ trợ liên quan đến nông nghiệp giúp công việc tại trang trại thú vị hơn. </div>
+                            <p class="date_post"><span><?= date('d-m-Y', $val['created_at']) ?><span></p>
+                        </div>
+                    </a>
+                </div>
+                <?php
+                    } ?>
             </div>
+        </div>
         <?php } ?>
     </div>
 </div>
