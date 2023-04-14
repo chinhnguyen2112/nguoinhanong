@@ -47,7 +47,7 @@ body {
 .main_header {
     position: fixed;
     width: 100%;
-    background: #ea9912;
+    background: #86d05f;
     z-index: 3;
 }
 
@@ -58,7 +58,7 @@ body {
     -moz-transition: all .3s;
     transition: all .3s;
     width: -webkit-fill-available;
-    background: #ea9912;
+    background: #86d05f;
     margin: auto;
     display: flex;
     padding: 5px 20px;

@@ -32,8 +32,8 @@ class Home extends CI_Controller
     {
         $data['canonical'] = base_url();
         $where['type'] = 0;
-        $data['blog'] = $this->Madmin->get_limit($where, 'blogs', 0, 5);
-        $data['meta_title'] = 'VnEspost - Kết nối thông tin kiến thức nền tảng Game Online';
+        $data['blog'] = $this->Madmin->get_limit($where, 'blogs', 0, 20);
+        $data['meta_title'] = 'Người Nhà Nông: Đồng hành cùng bà con nông dân phát triển';
         $data['content'] = 'home';
         $data['list_js'] = [
             'slick.min.js',
@@ -243,6 +243,41 @@ class Home extends CI_Controller
             'bxh.css',
         ];
         $data['index'] = 1;
+        $this->load->view('index', $data);
+    }
+    public function test()
+    {
+        // $ch = curl_init();
+        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($ch, CURLOPT_URL, 'https://phunuplus.vn/status-giam-can/');
+        // $result = curl_exec($ch);
+        // curl_close($ch);
+
+        // $obj = json_decode($result);
+        // var_dump($obj);
+        function file_get_contents_curl($url)
+        {
+
+            $ch = curl_init();
+
+            curl_setopt($ch, CURLOPT_AUTOREFERER, TRUE);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+
+            $data = curl_exec($ch);
+            curl_close($ch);
+
+            return $data;
+        }
+        $getcv = 'https://phunuplus.vn/status-giam-can/';
+        $html = file_get_contents($getcv);
+
+        // var_dump($html);
+        $data['data_content'] = $html;
+        $data['content'] = 'get_content';
         $this->load->view('index', $data);
     }
 }

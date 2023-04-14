@@ -449,6 +449,40 @@ a.H4abc {
     gap: 20px;
 }
 
+th,
+td {
+    border-bottom: 1px solid #000 !important;
+    border-left: 1px solid #000 !important;
+    text-align: center !important;
+    padding: 10px;
+}
+
+table {
+    border-spacing: 0px !important;
+    border: 1px solid #000 !important;
+    border-bottom: none !important;
+    border-color: black !important;
+}
+
+th:first-child,
+td:first-child {
+    border-left: none !important;
+}
+
+.content_blog table p,
+.content_blog table span {
+    margin-bottom: 0 !important;
+    /* text-indent: 20px; */
+    font-size: 17px !important;
+    line-height: 1.5 !important;
+    /* text-align: justify !important; */
+}
+
+.content_blog table th p {
+    text-align: center !important;
+    font-weight: 700;
+}
+
 @media only screen and (max-width: 1024px) {
     .container_widget_about {
         padding: 20px;

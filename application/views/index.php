@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="/assets/css/reset.css">
   <link rel="stylesheet" href="/assets/css/header.css">
   <link rel="stylesheet" href="/assets/css/footer.css">
+  <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
 
   <?php if (isset($list_css)) {
     foreach ($list_css as $css) { ?>
@@ -39,7 +40,7 @@
   <?php  }
   } ?>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZMHVTL8HF0"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LRH6DE6XT1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -48,7 +49,7 @@
     }
     gtag('js', new Date());
 
-    gtag('config', 'G-ZMHVTL8HF0');
+    gtag('config', 'G-LRH6DE6XT1');
   </script>
 </head>
 
@@ -63,7 +64,6 @@
 
   $this->load->view("includes/footer");
   ?>
-  <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
   <?php
   if (isset($list_js)) {
     foreach ($list_js as $js) { ?>

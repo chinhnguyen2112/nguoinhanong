@@ -6,10 +6,6 @@
                 <span> / </span>
                 <span class="this_breadcrumb"><?= $title_page ?></span>
             </div>
-            <div class="banner_all">
-                <div class="this_nanner_all"><img src="/images/banner1.gif" alt="banner"></div>
-                <div class="this_nanner_all"><img src="/images/banner2.gif" alt="banner"></div>
-            </div>
         </div>
         <?php if (isset($content_tag) && $content_tag != '') { ?>
             <div class="blog_content">

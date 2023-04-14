@@ -14,9 +14,9 @@ class Ajax extends CI_Controller
     public function load_more()
     {
         $page = $this->input->post('page');
-        $page = 5 * ($page - 1);
+        $page = 20 * ($page - 1);
         $where['type'] = 0;
-        $blog = $this->Madmin->get_limit($where, 'blogs', $page, 5);
+        $blog = $this->Madmin->get_limit($where, 'blogs', $page, 20);
         $html = '';
         if ($blog != null) {
             foreach ($blog as $val) {
@@ -37,7 +37,7 @@ class Ajax extends CI_Controller
                         <div class="line_home"></div>';
             }
             $next = 0;
-            if (count($blog) == 5) {
+            if (count($blog) == 20) {
                 $next = 1;
             }
             $response = [
