@@ -224,60 +224,86 @@ class Home extends CI_Controller
             redirect('/');
         }
     }
-    public function bxh()
+    public function import_file()
     {
-        if ($_SERVER['REQUEST_URI'] != '/bang-xep-hang/') {
-            redirect('/bang-xep-hang/');
-        }
-        $chuyenmuc = $this->Madmin->get_by(['alias' => 'bang-xep-hang'], 'category');
-        $data['title_page'] = "Bảng xếp hạng";
-        $data['meta_title'] = $chuyenmuc['meta_title'];
-        $data['meta_des'] = $chuyenmuc['meta_des'];
-        $data['meta_key'] = "Bảng xếp hạng";
-        $data['canonical'] = base_url() . 'bang-xep-hang/';
-        $data['content'] = 'blog/bxh';
-        $data['list_js'] = [
-            'bxh.js',
-        ];
-        $data['list_css'] = [
-            'bxh.css',
-        ];
-        $data['index'] = 1;
+        $data['content'] = 'get_blog';
         $this->load->view('index', $data);
     }
     public function test()
     {
-        // $ch = curl_init();
-        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($ch, CURLOPT_URL, 'https://phunuplus.vn/status-giam-can/');
-        // $result = curl_exec($ch);
-        // curl_close($ch);
-
-        // $obj = json_decode($result);
-        // var_dump($obj);
-        function file_get_contents_curl($url)
-        {
-
-            $ch = curl_init();
-
-            curl_setopt($ch, CURLOPT_AUTOREFERER, TRUE);
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-
-            $data = curl_exec($ch);
-            curl_close($ch);
-
-            return $data;
-        }
-        $getcv = 'https://phunuplus.vn/status-giam-can/';
-        $html = file_get_contents($getcv);
-
-        // var_dump($html);
-        $data['data_content'] = $html;
+        $url_post = $this->input->post('url_blog');
+        error_reporting(0);
+        $headers = [
+            'Try: Trying',
+            'Content-Type: text/html',
+        ];
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL =>  $url_post,
+            CURLOPT_USERAGENT => 'XuanThuLab test cURL Request',
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_HTTPHEADER => $headers,
+        ));
+        $alias = str_replace('https://phunuplus.vn/', '', $url_post);
+        $resp = curl_exec($curl);
+        $data['data_content'] = $resp;
+        $data['alias_url'] = str_replace('/', '', $alias);
         $data['content'] = 'get_content';
         $this->load->view('index', $data);
+    }
+    public function add_blog()
+    {
+        $url_cate = $this->input->post('url_cate');
+        $url_cate_new = str_replace('https://phunuplus.vn/category/', '', $this->input->post('url_cate'));
+        $alias_cate = str_replace('/', '', $url_cate_new);
+        $text_cate = $this->input->post('text_cate');
+        $url_cate_child = str_replace($url_cate, '', $this->input->post('url_cate_child'));
+        $alias_cate_child = str_replace('/', '', $url_cate_child);
+        $text_cate_child = $this->input->post('text_cate_child');
+        $where_cate = [
+            'alias' => $alias_cate,
+            'parent' => 0
+        ];
+        $cate = $this->Madmin->get_by($where_cate, 'category');
+        if ($cate != null) {
+            $id_cate = $cate['id'];
+        } else {
+            $data_insert_cate = [
+                'name' => $text_cate,
+                'alias' => $alias_cate,
+                'title' => $text_cate - " Phụ Nữ Plus"
+            ];
+            $id_cate = $this->Madmin->insert($data_insert_cate, 'category');
+        }
+        $where_cate_child = [
+            'alias' => $alias_cate_child,
+            'parent' => $id_cate
+        ];
+        $cate_child = $this->Madmin->get_by($where_cate_child, 'category');
+        if ($cate_child != null) {
+            $id_cate_child = $cate_child['id'];
+        } else {
+            $data_insert_cate_child = [
+                'name' => $text_cate_child,
+                'alias' => $alias_cate_child,
+                'parent' => $id_cate,
+                'title' => $text_cate_child - " Phụ Nữ Plus"
+            ];
+            $id_cate_child = $this->Madmin->insert($data_insert_cate_child, 'category');
+        }
+        $data['content'] = $this->input->post('content');
+        $data['title'] = $this->input->post('h1');
+        $data['alias'] = $this->input->post('alias');
+        $data['chuyenmuc'] = $id_cate_child;
+        $data['meta_title'] = $this->input->post('title');
+        $data['meta_des']     = $this->input->post('des');
+        $data['updated_at'] = strtotime($this->input->post('date'));
+        $data['created_at'] = strtotime($this->input->post('date'));
+        $insert_blog = $this->Madmin->insert($data, 'blogs');
+        $response = [
+            'status' => 1,
+        ];
+        echo json_encode($response);
     }
 }
