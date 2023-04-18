@@ -1,6 +1,6 @@
 <div class="main_header ">
     <div class="header_bot body_width">
-        <a href="/">
+        <a class="logo" href="/">
             <img src="/images/logo.png" alt="logo" class="img_logo_bot_header"></a>
         <div class="header_menu">
             <div class="list_menu">
@@ -21,8 +21,14 @@
                         <?php } ?>
                     </div>
                 <?php } ?>
-            </div>
+            </div>  
         </div>
+        <form class="search" id="search" method="get" action="search">
+            <input class="search_input" type="text" name="search" value="search" placeholder="Tìm kiếm..." />
+            <button class="btn_search">
+                <img class="img_search" src="/images/icon-search.png"/>
+            </button>
+        </form>
         <img src="/images/menu_mb.svg" alt="show menu" class="img_show_menu" onclick="show_menu(this,1)">
     </div>
 </div>
