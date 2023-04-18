@@ -32,7 +32,18 @@ class Home extends CI_Controller
     {
         $data['canonical'] = base_url();
         $where['type'] = 0;
+        $where_cate['chuyenmuc'] = 4;
         $data['blog'] = $this->Madmin->get_limit($where, 'blogs', 0, 20);
+        // list cate 1
+        $name_cate_1 = $this->Madmin->query_sql_row("SELECT category.name as cate_name_1, category.alias as cate_alias_1 FROM blogs INNER JOIN category WHERE category.id = blogs.chuyenmuc");
+        $list_cate_1 = $this->Madmin->query_sql("SELECT * FROM blogs WHERE chuyenmuc = 4 ORDER BY id DESC LIMIT 5");
+        $data['list_cate_1'] = $list_cate_1;
+        $data['name_cate_1'] = $name_cate_1;
+        // list cate 2
+        $name_cate_2 = $this->Madmin->query_sql_row("SELECT category.name as cate_name_2, category.alias as cate_alias_2 FROM blogs INNER JOIN category WHERE category.id = blogs.chuyenmuc");
+        $list_cate_2 = $this->Madmin->query_sql("SELECT * FROM blogs WHERE chuyenmuc = 9 ORDER BY id DESC LIMIT 5");
+        $data['list_cate_2'] = $list_cate_2;
+        $data['name_cate_2'] = $name_cate_2;
         $data['meta_title'] = 'Người Nhà Nông: Đồng hành cùng bà con nông dân phát triển';
         $data['content'] = 'home';
         $data['list_js'] = [
