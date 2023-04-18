@@ -17,23 +17,124 @@
         <?php foreach ($blog as $key => $val) {
           if ($key > 0) { ?>
             <div class="this_content_right">
-              <a class="linl_all_detail link_fl" title="<?= $val['title'] ?>" href="/<?= $val['alias'] ?>/">
+              <a class="item_blog_home linl_all_detail link_fl" title="<?= $val['title'] ?>" href="/<?= $val['alias'] ?>/">
                 <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
                 <div class="box_content_blog">
                   <div class="fl_date">
                     <p class="date_post"><?php $cate = chuyen_muc(['id' => $val['chuyenmuc']]);
                                           echo $cate[0]['name']; ?></p>
-                    <p class="date_post"><?= date('d-m-Y', $val['created_at']) ?></p>
                   </div>
                   <p class="title_blog"><?= $val['title'] ?></p>
-                  <span class="des_post"><?= $val['sapo'] ?></span>
+                  <!-- <span class="des_post"><?= $val['sapo'] ?></span> -->
+                  <p class="date_post date_blog_home"><?= date('d-m-Y', $val['created_at']) ?></p>
+
                 </div>
               </a>
             </div>
-            <div class="line_home"></div>
         <?php }
         } ?>
       </div>
+       <div class="list_cate_home">
+        <div class="title_cate">
+          <span class="title_cate_top"><?= $name_cate_1['cate_name_1'] ?></span>
+        </div>
+        <div class="content_cate">
+          <?php foreach ($list_cate_1 as $key => $val) {
+              if ($key == 0) { ?>
+              <div class="left_content">
+                <div class="cont_thumb">
+                  <a href="<?= $val['alias'] ?>">
+                    <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
+                  </a>
+                  <span class="link_cate">
+                    <a href="/<?= $name_cate_1['cate_alias_1'] ?>"><?= $name_cate_1['cate_name_1'] ?></a>
+                  </span>
+                </div>
+                <div class="big_item">
+                  <div class="big_title">
+                    <a href="#"><?= $val['title'] ?></a>
+                  </div>
+                  <div class="big_infor">
+                    <p class="big_created"><?= date('d-m-Y', $val['created_at']) ?></p>
+                  </div>
+                  <div class="big_content">
+                    <p class="big_sapo"><?= $val['sapo'] ?></p>
+                    <a class="btn_more" href="/<?= $val['alias'] ?>">READ MORE</a>
+                  </div>
+                </div>
+              </div>
+              <div class="right_content">
+                <?php } else if($key > 0) { ?>
+                  <a class="small_item" href="<?= $val['alias'] ?>">
+                    <div class="small_img">
+                      <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
+                    </div>
+                    <div class="small_content">
+                      <div class="small_title">
+                        <p href="<?= $val['alias'] ?>"><?= $val['title'] ?></p>
+                      </div>
+                      <div class="small_date">
+                        <i class="fa fa-clock-o"><?= date('d-m-Y', $val['created_at']) ?></i>
+                      </div>
+                    </div>
+                  </a>
+                <?php }
+                } ?>
+            </div>
+        </div>
+      </div>
+
+      <div class="list_cate_home">
+        <div class="title_cate">
+          <span class="title_cate_top"><?= $name_cate_2['cate_name_2'] ?></span>
+        </div>
+        <div class="content_cate">
+          <?php foreach ($list_cate_2 as $key => $val) {
+              if ($key == 0) { ?>
+              <div class="left_content">
+                <div class="cont_thumb">
+                  <a href="<?= $val['alias'] ?>">
+                    <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
+                  </a>
+                  <span class="link_cate">
+                    <a href="/<?= $name_cate_2['cate_alias_2'] ?>"><?= $name_cate_2['cate_name_2'] ?></a>
+                  </span>
+                </div>
+                <div class="big_item">
+                  <div class="big_title">
+                    <a href="#"><?= $val['title'] ?></a>
+                  </div>
+                  <div class="big_infor">
+                    <p class="big_created"><?= date('d-m-Y', $val['created_at']) ?></p>
+                  </div>
+                  <div class="big_content">
+                    <p class="big_sapo"><?= $val['sapo'] ?></p>
+                    <a class="btn_more" href="/<?= $val['alias'] ?>">READ MORE</a>
+                  </div>
+                </div>
+              </div>
+              <div class="right_content">
+                <?php } else if($key > 0) { ?>
+                  <a class="small_item" href="<?= $val['alias'] ?>">
+                    <div class="small_img">
+                      <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
+                    </div>
+                    <div class="small_content">
+                      <div class="small_title">
+                        <p href="<?= $val['alias'] ?>"><?= $val['title'] ?></p>
+                      </div>
+                      <div class="small_date">
+                        <i class="fa fa-clock-o"><?= date('d-m-Y', $val['created_at']) ?></i>
+                      </div>
+                    </div>
+                  </a>
+                <?php }
+                } ?>
+            </div>
+        </div>
+      </div>
+      
+     
       <!-- <div class="load_more">Xem thêm</div> -->
     </div>
     <div class="left_home">
@@ -51,9 +152,9 @@
                 </div>
               </a>
             </div>
-            <div class="left_line">
+            <!-- <div class="left_line">
               <div class="line_home"></div>
-            </div>
+            </div> -->
         <?php }
         } ?>
       </div>
