@@ -64,8 +64,31 @@ body {
     display: flex;
     padding: 5px 20px;
     align-items: center;
+    justify-content: space-between;
 }
-
+.search {
+    position: relative;
+}
+.img_search {
+    right: 12px;
+    top: 5px;
+    position: absolute;
+    width: 20px;
+}
+input.search_input {
+    height: 30px;
+    background-color: #e7e5e5;
+    border: none;
+    border-radius: 10px;
+    padding-left: 10px;
+    color: #a19f9f;
+}
+.btn_search .fa {
+    font-family: FontAwesome;
+}
+.btn_search .fa::before {
+    content: "\F002";
+}
 .header_menu {
     display: flex;
     height: 58px;
