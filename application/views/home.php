@@ -15,7 +15,7 @@
             <div class="list_blog_home">
                 <!-- <p class="title_left_home none_pc">TIN MỚI NHẤT</p> -->
                 <?php foreach ($blog as $key => $val) {
-          if ($key > 0) { ?>
+              if ($key > 0) { ?>
                 <div class="this_content_right">
                     <a class="item_blog_home linl_all_detail link_fl" title="<?= $val['title'] ?>"
                         href="/<?= $val['alias'] ?>/">
@@ -32,7 +32,7 @@
                     </a>
                 </div>
                 <?php }
-        } ?>
+                } ?>
             </div>
             <div class="list_cate_home">
                 <div class="title_cate">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="content_cate">
                     <?php foreach ($list_cate_1 as $key => $val) {
-              if ($key == 0) { ?>
+                        if ($key == 0) { ?>
                     <div class="left_content">
                         <div class="cont_thumb">
                             <a href="/<?= $val['alias'] ?>/">
@@ -80,11 +80,10 @@
                             </div>
                         </a>
                         <?php }
-                } ?>
+                        } ?>
                     </div>
                 </div>
             </div>
-
             <div class="list_cate_home">
                 <div class="title_cate">
                     <span class="title_cate_top"><?= $name_cate_2['cate_name_2'] ?></span>
@@ -131,7 +130,7 @@
                             </div>
                         </a>
                         <?php }
-                } ?>
+                        } ?>
                     </div>
                 </div>
             </div>
@@ -140,22 +139,24 @@
             <div class="content_left">
                 <p class="title_left_home">TIN NỔI BẬT</p>
                 <?php foreach ($blog as $key => $val) {
-          if ($key < 6) { ?>
+                if ($key < 6) { ?>
                 <div class="this_content_left">
                     <a class="linl_all_detail link_fl link_fl_left " title="<?= $val['title'] ?>"
                         href="/<?= $val['alias'] ?>/">
                         <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
                         <div class="box_content_blog box_content_blog_left">
                             <p class="date_post"><?php $cate = chuyen_muc(['id' => $val['chuyenmuc']]);
-                                        echo $cate[0]['name']; ?></p>
+                                            echo $cate[0]['name']; ?></p>
                             <p class="title_blog"><?= $val['title'] ?></p>
                         </div>
                     </a>
                 </div>
                 <!-- <div class="left_line">
-              <div class="line_home"></div>
-            </div> -->
+                    <div class="line_home"></div>
+                  </div> -->
                 <?php }
-        } ?>
+                  } ?>
+            </div>
         </div>
     </div>
+</div>
