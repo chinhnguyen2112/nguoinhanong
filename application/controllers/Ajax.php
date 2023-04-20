@@ -51,5 +51,42 @@ class Ajax extends CI_Controller
             ];
         }
         echo json_encode($response);
+    }   
+    public function search()
+    {
+        $infor_cate = $this->Madmin->query_sql_row("SELECT category.name as cate_name, category.alias as cate_alias FROM blogs INNER JOIN category WHERE category.id = blogs.chuyenmuc AND blogs.type = 0");
+        $data['infor_cate'] = $infor_cate;
+        $list_news = $this->Madmin->query_sql("SELECT * FROM blogs WHERE type = 0 ORDER BY id DESC LIMIT 5");
+        $data['list_news'] = $list_news;
+        $key_search = $this->input->get('search');
+        $data['key_search'] = $key_search;
+        if ($key_search != '') {
+            $page = $this->uri->segment(2);
+            if ($page < 1 || $page == '') {
+                $page = 1;
+            }
+            $limit = 10;
+            $start = $limit * ($page - 1);
+            $count = $this->Madmin->query_sql("SELECT * FROM blogs WHERE type = 0 AND title LIKE '%$key_search%'");
+            pagination('/search' , count($count), $limit);
+            $result = $this->Madmin->query_sql("SELECT * FROM blogs WHERE title LIKE '%$key_search%' ORDER BY id DESC LIMIT $start,$limit ");
+            $data['result'] = $result;
+            $data['meta_title'] = 'Tất cả kết quả tìm kiếm';
+            $data['content'] = 'result_search';
+            $data['list_css'] = ['result_search.css'];
+            $this->load->view('index',$data);
+        } else {
+            redirect('/');
+        }
+        // if (isset($_POST['key_search'])) {
+        //     $result = $this->Madmin->query_sql("SELECT * FROM blogs WHERE name LIKE '{$_POST['key_search']}%'");
+        //     if ($result > 0) {
+        //         while($resultt = mysqli_fetch_array($result)) {
+        //             echo $resultt['name'];
+        //         }
+        //     } else {
+        //         echo "lêu lêu";
+        //     }
+        // }
     }
 }

@@ -195,7 +195,7 @@
 
 .date_post {
     margin-bottom: 10px;
-    color: #ffc600;
+    color: #fff;
     font-weight: 500;
     font-size: 13px;
     line-height: 15px;
@@ -296,7 +296,7 @@
 }
 
 .blog_top {
-    background: #090f20;
+    background: #86d05f;
     /* padding: 15px 20px; */
     display: flex;
     flex-direction: column;

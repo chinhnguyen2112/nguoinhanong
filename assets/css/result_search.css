@@ -1,0 +1,247 @@
+.container {
+    margin-top: 60px;
+    position: relative;
+    padding: 50px 0 40px;
+    max-width: 1070px;
+    margin: auto;
+}
+.result_content {
+    display: flex;
+    justify-content: space-between;
+}
+.breadcrumb {
+    margin-bottom: 20px;
+}
+.left_content {
+    padding-right: 15px;
+    width: 66.6%;
+}
+.heading_left {
+    font-weight: 700;
+    font-size: 26px;
+    margin: 0 0 15px;
+    margin-bottom: 40px;
+    font-family: arial !important;
+    color: #29292f;
+}
+.heading_left p {
+    font-weight: 700;
+    font-size: 26px;
+    margin: 0 0 15px;
+}
+.item_result {
+    display: block;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+.left_item_content {
+    width: 360px;
+    position: relative;
+    float: left;
+    margin-right: 30px;
+}
+.name_cate {
+    left: 15px;
+    text-transform: uppercase;
+    top: 15px;
+    background-color: #005a607a;
+    color: #ffffff;
+    position: absolute;
+    padding: 0px 5px;
+    font-size: 11px;
+    font-family: arial !important;
+}
+.title_item_result {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 5px;
+    color: #29292f;
+    font-family: arial !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+.date_blogs {
+    margin-top: 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #a0a0a0;
+}
+.sapo_blog {
+    font-size: 14px;
+    line-height: 17px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-top: 1em;
+}
+.btn_see_more {
+    color: #3e3e44;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 15px;
+    padding: 6px 18px;
+    border: 1px solid #e0e0e0;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+.btn_see_more:hover {
+    background: #86d05f;
+    color: #fff;
+}
+.right_content {
+    padding-left: 30px;
+    width: 33.3%;
+}
+.title_left_content {
+    color: #000;
+    font-style: normal;
+    font-weight: 500;
+    border-bottom: 3px solid #8a8a8a;
+    font-size: 28px;
+    line-height: unset;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.item_left_content {
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+.left_item {
+    float: left;
+    width: 120px;
+}
+.right_item {
+    margin-left: 120px;
+    padding-left: 15px;
+}
+.title_item_right {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4em;
+    margin: 0 0 5px;
+    letter-spacing: normal;
+    color: #29292f;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.date_item_left {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #a0a0a0;
+}
+.pagination {
+    padding: 5px 20px;
+    width: max-content;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.page-item {
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #eee;
+    text-align: center;
+    min-width: 30px;
+    display: flex;
+    font-weight: 700;
+    margin: 0 5px;
+}
+.page-item:hover {
+    background: #86d05f;
+    color: #fff !important;
+}
+.page-item a:hover {
+    color: #fff;
+}
+.page-item a {
+    color: #212121;
+    width: 100%;
+    padding: 5px;
+}
+.active_pagin a {
+    color: #fff !important;
+    background: #86d05f !important;
+}
+@media only screen and (max-width: 768px) {
+    .container {
+        padding: 40px 15px;
+    }
+    .left_item_content {
+        width: 230px;
+        margin-right: 20px;
+    }
+    .title_item_result {
+        font-size: 16px;
+    }
+    .date_blogs {
+        margin-top: 5px;
+    }
+    .sapo_blog {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    .right_content {
+        padding: 0 15px;
+        margin-top: 35px;
+    }
+    .title_item_right {
+        font-size: 13px;
+    }
+}
+@media only screen and (max-width: 375px) {
+    .result_content {
+        flex-direction: column;
+    }
+    .left_content, .right_content {
+        width: 100%;
+    }
+    .right_content {
+        padding: 0;
+    }
+    .left_item_content {
+        width: 40%;
+    }
+    .heading_left p {
+        font-weight: 700;
+        font-size: 20px;
+        margin: 0 0 15px;
+    }
+    .name_cate {
+        left: 5px;
+        text-transform: uppercase;
+        top: 7px;
+        background-color: #005a607a;
+        color: #ffffff;
+        position: absolute;
+        padding: 3px 5px;
+        font-size: 8px;
+        line-height: 8px;
+        font-family: arial !important;
+    }
+    .title_item_result {
+        font-size: 14px;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+    }
+    .sapo_blog {
+        display: none;
+    }
+    .btn_see_more {
+        display: none;
+    }
+    .title_left_content {
+        font-size: 20px;
+    }
+}
