@@ -5,11 +5,11 @@
         <a class="linl_all_detail" title="<?= $blog[0]['title'] ?>" href="/<?= $blog[0]['alias'] ?>/">
           <img src="/<?= $blog[0]['image'] ?>" alt="<?= $blog[0]['title'] ?>">
           <div class="fl_date">
-              <p class="date_post"><?php $cate = chuyen_muc(['id' => $blog[0]['chuyenmuc']]);
-                                    echo $cate[0]['name']; ?></p>
-              <p class="date_post"><?= date('d-m-Y', $blog[0]['created_at']) ?></p>
-            </div>
-            <p class="title_blog_top"><?= $blog[0]['title'] ?></p>
+            <p class="date_post"><?php $cate = chuyen_muc(['id' => $blog[0]['chuyenmuc']]);
+                                  echo $cate[0]['name']; ?></p>
+            <p class="date_post"><?= date('d-m-Y', $blog[0]['created_at']) ?></p>
+          </div>
+          <p class="title_blog_top"><?= $blog[0]['title'] ?></p>
         </a>
       </div>
       <div class="list_blog_home">
@@ -42,7 +42,7 @@
               if ($key == 0) { ?>
               <div class="left_content">
                 <div class="cont_thumb">
-                  <a href="<?= $val['alias'] ?>">
+                  <a href="/<?= $val['alias'] ?>/">
                     <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
                   </a>
                   <span class="link_cate">
@@ -51,28 +51,27 @@
                 </div>
                 <div class="big_item">
                   <div class="big_title">
-                    <a href="<?= $val['alias'] ?>"><?= $val['title'] ?></a>
+                    <a href="/<?= $val['alias'] ?>/"><?= $val['title'] ?></a>
                   </div>
-                  <a href="<?= $val['alias'] ?>">
+                  <a href="/<?= $val['alias'] ?>/">
                     <div class="big_infor">
                       <p class="big_created"><?= date('d-m-Y', $val['created_at']) ?></p>
                     </div>
                     <div class="big_content">
                       <p class="big_sapo"><?= $val['sapo'] ?></p>
-                      <a class="btn_more" href="/<?= $val['alias'] ?>">READ MORE</a>
                     </div>
                   </a>
                 </div>
               </div>
               <div class="right_content">
                 <?php } else if($key > 0) { ?>
-                  <a class="small_item" href="<?= $val['alias'] ?>">
+                  <a class="small_item" href="/<?= $val['alias'] ?>/">
                     <div class="small_img">
                       <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
                     </div>
                     <div class="small_content">
                       <div class="small_title">
-                        <p href="<?= $val['alias'] ?>"><?= $val['title'] ?></p>
+                        <p><?= $val['title'] ?></p>
                       </div>
                       <div class="small_date">
                         <i class="fa fa-clock-o"><?= date('d-m-Y', $val['created_at']) ?></i>
@@ -94,7 +93,7 @@
               if ($key == 0) { ?>
               <div class="left_content">
                 <div class="cont_thumb">
-                  <a href="<?= $val['alias'] ?>">
+                  <a href="/<?= $val['alias'] ?>/">
                     <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
                   </a>
                   <span class="link_cate">
@@ -103,28 +102,27 @@
                 </div>
                 <div class="big_item">
                   <div class="big_title">
-                    <a href="<?= $val['alias'] ?>"><?= $val['title'] ?></a>
+                    <a href="/<?= $val['alias'] ?>/"><?= $val['title'] ?></a>
                   </div>
-                  <a href="<?= $val['alias'] ?>">
+                  <a href="/<?= $val['alias'] ?>/">
                     <div class="big_infor">
                       <p class="big_created"><?= date('d-m-Y', $val['created_at']) ?></p>
                     </div>
                     <div class="big_content">
                       <p class="big_sapo"><?= $val['sapo'] ?></p>
-                      <a class="btn_more" href="/<?= $val['alias'] ?>">READ MORE</a>
                     </div>
                   </a>
                 </div>
               </div>
               <div class="right_content">
                 <?php } else if($key > 0) { ?>
-                  <a class="small_item" href="<?= $val['alias'] ?>">
+                  <a class="small_item" href="/<?= $val['alias'] ?>/">
                     <div class="small_img">
                       <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
                     </div>
                     <div class="small_content">
                       <div class="small_title">
-                        <p href="<?= $val['alias'] ?>"><?= $val['title'] ?></p>
+                        <p><?= $val['title'] ?></p>
                       </div>
                       <div class="small_date">
                         <i class="fa fa-clock-o"><?= date('d-m-Y', $val['created_at']) ?></i>
