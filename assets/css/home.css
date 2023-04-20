@@ -378,7 +378,7 @@
     text-align: left;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     overflow: hidden;
     margin-bottom: 10px;
     font-size: 14px !important;
