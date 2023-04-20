@@ -36,7 +36,7 @@
             </div>
             <div class="list_cate_home">
                 <div class="title_cate">
-                    <span class="title_cate_top"><?= $name_cate_1['cate_name_1'] ?></span>
+                    <span class="title_cate_top"><?= $name_cate_1['name']?></span>
                 </div>
                 <div class="content_cate">
                     <?php foreach ($list_cate_1 as $key => $val) {
@@ -47,7 +47,7 @@
                                 <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
                             </a>
                             <span class="link_cate">
-                                <a href="/<?= $name_cate_1['cate_alias_1'] ?>"><?= $name_cate_1['cate_name_1'] ?></a>
+                                <a href="/<?= $name_cate_1['alias'] ?>"><?= $name_cate_1['name'] ?></a>
                             </span>
                         </div>
                         <div class="big_item">
@@ -89,7 +89,7 @@
             </div>
             <div class="list_cate_home">
                 <div class="title_cate">
-                    <span class="title_cate_top"><?= $name_cate_2['cate_name_2'] ?></span>
+                    <span class="title_cate_top"><?= $name_cate_2['name'] ?></span>
                 </div>
                 <div class="content_cate">
                     <?php foreach ($list_cate_2 as $key => $val) {
@@ -100,7 +100,7 @@
                                 <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
                             </a>
                             <span class="link_cate">
-                                <a href="/<?= $name_cate_2['cate_alias_2'] ?>"><?= $name_cate_2['cate_name_2'] ?></a>
+                                <a href="/<?= $name_cate_2['alias'] ?>"><?= $name_cate_2['name'] ?></a>
                             </span>
                         </div>
                         <div class="big_item">
