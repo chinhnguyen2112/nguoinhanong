@@ -51,7 +51,6 @@ body {
     background: #86d05f;
     z-index: 3;
 }
-
 .header_bot {
     -moz-transition: all .3s;
     z-index: 200;
@@ -65,6 +64,9 @@ body {
     padding: 5px 20px;
     align-items: center;
     justify-content: space-between;
+}
+.search_none_pc {
+    display: none;
 }
 .search {
     position: relative;
@@ -82,6 +84,11 @@ input.search_input {
     border-radius: 10px;
     padding-left: 10px;
     color: #a19f9f;
+}
+.search_result {
+    width: 200px;
+    position: absolute;
+    z-index: 3;
 }
 .btn_search .fa {
     font-family: FontAwesome;
@@ -190,7 +197,9 @@ img.img_logo_bot_header {
 .menu_con p a:hover {
     color: #dadada;
 }
-
+.input_search_none_pc {
+    display: none;
+}
 @media only screen and (max-width: 1024px) {
     .img_show_menu {
         display: block;
@@ -306,5 +315,76 @@ img.img_logo_bot_header {
 
     .box_menu {
         display: block;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .header_bot {
+        flex-direction: row;
+        position: fixed;
+        top: 0;
+        width: -webkit-fill-available;
+        z-index: 201;
+        padding: 10px 0;
+        justify-content: space-between;
+        padding-right: 0;
+        align-items: center;
+        padding-left: 0;
+        border-bottom: 1px solid #DBDBDB;
+    }
+    .img_show_menu {
+        left: 15px;  
+    }
+    .logo {
+        margin: auto;
+    }
+    .img_logo_bot_header img {
+        width: 60px;
+        margin-right: 0;
+        border-radius: 50%;
+    }
+    .search_none_pc {
+        display: block;
+    }
+    .search {
+        display: none;
+    }
+    .img_search {
+        right: 20px;
+        top: 27px;
+        position: absolute;
+        width: 30px;
+    }
+    .input_search_none_pc {
+        border-radius: 10px;
+        height: 0;
+        width: 90%;
+        margin-right: 15px;
+        position: fixed;
+        z-index: 1;
+        top: 60px;
+        right: 0;
+        /* background-color: #f4b3b3; */
+        overflow-x: hidden;
+        transition: 0.5s;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    form#search {
+        width: 100%;
+    }
+    .search_input {
+        width: 100%;
+        font-size: 13px;
+    }
+    .img_close {
+        position: absolute;
+        display: none;
+        width: 23px;
+        right: 20px;
+        top: 27px;
+    }
+}
+@media only screen and (max-width: 375px) {
+    .logo img {
+        margin: 0;
     }
 }

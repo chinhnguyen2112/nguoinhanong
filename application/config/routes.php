@@ -65,6 +65,9 @@ $route['ajax_add_chuyenmuc'] = 'Admin/ajax_add_chuyenmuc';
 $route['list_chuyenmuc'] = 'Admin/list_chuyenmuc';
 $route['list_chuyenmuc/(:num)'] = 'Admin/list_chuyenmuc';
 
+//search
+$route['result_search'] = 'Home/view_result_search';
+
 $route['add_tag'] = 'Admin/view_add_tag';
 $route['ajax_add_tag'] = 'Admin/ajax_add_tag';
 $route['list_tag'] = 'Admin/list_tag';
@@ -76,6 +79,7 @@ $route['bang-xep-hang'] = 'Home/bxh';
 //AJAX
 $route['load_more'] = 'Ajax/load_more';
 $route['search'] = 'Ajax/search';
+$route['search/(:num)'] = 'Ajax/search/$1';
 
 $route['(:any)'] = 'Home/chuyenmuc/$1 ';
 $route['(:any)/(:num)'] = 'Home/chuyenmuc/$1 ';

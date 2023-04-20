@@ -1,5 +1,6 @@
 <div class="main_header ">
     <div class="header_bot body_width">
+    <img src="/images/menu_mb.svg" alt="show menu" class="img_show_menu" onclick="show_menu(this,1)">
         <a class="logo" href="/">
             <img src="/images/logo.png" alt="logo" class="img_logo_bot_header"></a>
         <div class="header_menu">
@@ -24,12 +25,25 @@
             </div>  
         </div>
         <form class="search" id="search" method="get" action="search">
-            <input class="search_input" type="text" name="search" value="search" placeholder="Tìm kiếm..." />
-            <button class="btn_search">
+            <input class="search_input" id="search_input" type="text" autocomplete="off" name="search" placeholder="Tìm kiếm..." />
+            <a class="btn_search">
                 <img class="img_search" src="/images/icon-search.png"/>
-            </button>
+            </a>
         </form>
-        <img src="/images/menu_mb.svg" alt="show menu" class="img_show_menu" onclick="show_menu(this,1)">
+        <div class="search_none_pc">
+            <a id="btn" onclick="openList();">
+                <img class="img_search" id="open" src="/images/icons8-search-white.png"/>
+                <img class="img_close" id="close" src="/images/icons8-close-30.png"/>
+            </a>
+        </div>
+        <div class="input_search_none_pc" id="input_search_none_pc">
+            <form id="search" method="get" action="search">
+                <input class="search_input" id="search_input" type="text" autocomplete="off" name="search" placeholder="Tìm kiếm..." />
+                <!-- <a class="btn_search">
+                    <img class="img_search" src="/images/icon-search.png"/>
+                </a> -->
+            </form>
+        </div>
     </div>
 </div>
 <div class="main_content">

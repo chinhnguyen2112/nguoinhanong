@@ -7,47 +7,43 @@ function show_menu(e, type) {
 		$(e).attr("onclick", "show_menu(this,1)");
 	}
 }
-$('#search').validate({
-	onclick: false,
-	rules: {
-		search: {
-			required: true,
-		},
-	},
-	messages: {
-		search: {
-			required: "Vui lòng nhập từ khóa",
-		},
-	},
-	submitHandler: function() {
-		var formData = new FromData($('#search'));
-		$.ajax({
-			url: "/search",
-			type: "GET",
-			cache: false,
-			contentType: false,
-			processData: false,
-			dataType: "json",
-			data: formData,
-			success: function(data) {
-				if (data.status == 1) {
-					
-				} else {
-					
+
+$(document).ready(function() {
+	$('#search').submit(function() {
+		var key_search = $('#search_input').val();
+		if(key_search != '') {
+			$.ajax({
+				url: "/search",
+				method: "GET",
+				data:{key_search:key_search},
+				success:function(data) {
+					$('#search_result').html(data);
+					$('#search_result').css('display', 'block');
+					$("#live_search").focusout(function () {
+						$('#search_result').css('display', 'none');
+					});
+					$("#live_search").focusin(function () {
+						$('#search_result').css('display', 'block');
+					});
 				}
-			}
-		})
-	}
+			});
+		} else {
+			$('.search_result').css("display","none");
+		}
+	});
 });
-// })
-// if (isset($_REQUEST['search'])) {
-// 	$search = addslashes($_GET['search']);
-// 	if (empty($search)) {
-// 		echo "Vui lòng nhập từ khóa";
-// 	} else {
-// 		$query = "SELECT * FROM blogs WHERE name LIKE '%$search%'";
-// 	}
-// }
+
+function openList() {
+	var sidenav = document.getElementById("input_search_none_pc"),
+		main = document.getElementById("btn");
+	sidenav.style.height = sidenav.style.height == "30px" ? "0" : "30px";
+	document.getElementById("input_search_none_pc").style.display = "block";
+	main.style.marginTop = main.style.marginTop === "60px" ? "0" : "60px";
+}
+
+function closeList() {
+	classList.toggle("change");
+}
 // function show_menu1(e) {
 // 	$(".box_menu").show();
 // }
