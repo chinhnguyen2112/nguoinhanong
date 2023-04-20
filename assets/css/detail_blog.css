@@ -324,7 +324,6 @@ figcaption {
 }
 
 .blog_same {
-    text-align: center;
     width: 100%;
     margin-top: 30px;
     padding-bottom: 40px;
@@ -345,7 +344,13 @@ figcaption {
     font-weight: 600;
     color: #333333;
     font-size: 20px;
-    line-height: 32px;
+    line-height: 24px;
+    height: 50px;
+    margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
 
 .this_des_handbook {
@@ -361,10 +366,6 @@ figcaption {
 
 
 .this_handbook .date_post span {
-    margin-bottom: 5px;
-}
-
-.title_handbook {
     margin-bottom: 5px;
 }
 
@@ -452,7 +453,6 @@ a.H4abc {
 }
 
 .data_handbook {
-    text-align: center;
     width: 100%;
 }
 
