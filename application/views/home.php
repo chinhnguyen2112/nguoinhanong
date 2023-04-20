@@ -79,9 +79,9 @@
                                 </div>
                             </div>
                         </a>
-                        <?php }
-                        } ?>
                     </div>
+                    <?php }
+                        } ?>
                 </div>
             </div>
             <div class="list_cate_home">
@@ -90,7 +90,7 @@
                 </div>
                 <div class="content_cate">
                     <?php foreach ($list_cate_2 as $key => $val) {
-              if ($key == 0) { ?>
+                    if ($key == 0) { ?>
                     <div class="left_content">
                         <div class="cont_thumb">
                             <a href="/<?= $val['alias'] ?>/">
