@@ -15,7 +15,7 @@
             <div class="list_blog_home">
                 <!-- <p class="title_left_home none_pc">TIN MỚI NHẤT</p> -->
                 <?php foreach ($blog as $key => $val) {
-              if ($key > 0) { ?>
+                if ($key > 0) { ?>
                 <div class="this_content_right">
                     <a class="item_blog_home linl_all_detail link_fl" title="<?= $val['title'] ?>"
                         href="/<?= $val['alias'] ?>/">
@@ -79,9 +79,9 @@
                                 </div>
                             </div>
                         </a>
-                    </div>
-                    <?php }
+                        <?php }
                         } ?>
+                    </div>
                 </div>
             </div>
             <div class="list_cate_home">
