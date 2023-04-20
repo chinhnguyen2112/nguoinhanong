@@ -32,8 +32,8 @@ class Home extends CI_Controller
     {
         $data['canonical'] = base_url();
         $where['type'] = 0;
-        $where_cate['chuyenmuc'] = 4;
-        $data['blog'] = $this->Madmin->get_limit($where, 'blogs', 0, 20);
+        $data['blog'] = $this->Madmin->get_limit($where, 'blogs', 0, 19);
+        $data['blog_update'] = $this->Madmin->query_sql("SELECT * FROM blogs WHERE type = 0 ORDER BY updated_at DESC LIMIT 10");
         // list cate 1
         $name_cate_1 = $this->Madmin->query_sql_row("SELECT * FROM category  WHERE id = 4 ");
         $list_cate_1 = $this->Madmin->query_sql("SELECT * FROM blogs WHERE chuyenmuc = 4 AND type = 0 ORDER BY id DESC LIMIT 5");
@@ -103,7 +103,7 @@ class Home extends CI_Controller
             if ($_SERVER['REQUEST_URI'] != '/' . $alias . '/') {
                 redirect('/' . $alias . '/');
             }
-            $data['blog_same'] = $this->Madmin->query_sql("SELECT * FROM blogs WHERE chuyenmuc = {$blog['chuyenmuc']} AND id != {$blog['id']}  ORDER BY updated_at DESC LIMIT 3");
+            $data['blog_same'] = $this->Madmin->query_sql("SELECT * FROM blogs WHERE type = 0 AND chuyenmuc = {$blog['chuyenmuc']} AND id != {$blog['id']}  ORDER BY updated_at DESC LIMIT 4");
             $cate = $this->Madmin->query_sql_row("SELECT *  FROM category  WHERE id = {$blog['chuyenmuc']} ");
             $title_page = $cate['name'];
             if ($cate['parent'] > 0) {
