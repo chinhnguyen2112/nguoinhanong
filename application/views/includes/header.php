@@ -1,6 +1,6 @@
 <div class="main_header ">
     <div class="header_bot body_width">
-    <img src="/images/menu_mb.svg" alt="show menu" class="img_show_menu" onclick="show_menu(this,1)">
+        <img src="/images/menu_mb.svg" alt="show menu" class="img_show_menu" onclick="show_menu(this,1)" />
         <a class="logo" href="/">
             <img src="/images/logo.png" alt="logo" class="img_logo_bot_header"></a>
         <div class="header_menu">
@@ -46,4 +46,4 @@
         </div>
     </div>
 </div>
-<div class="main_content">
+<div class="main_content"></div>
