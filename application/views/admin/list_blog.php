@@ -159,13 +159,11 @@
                     <div class="card-body">
                         <div class="box_search_forrm">
                             <p>Bộ lọc</p>
-                            <select name="" id="tag">
-                                <option value="">Chọn tag</option>
-                                <?php $list_tag = tag();
-                                foreach ($list_tag as $val) {  ?>
-                                    <option <?= ($this->input->get('tag') == $val['id']) ? 'selected' : '' ?> value="<?= $val['id'] ?>"><?= $val['name'] ?></option>
-                                <?php } ?>
-                            </select>
+                            <div class="search">
+                                <form class="form_search" id="search" method="get" action="search">
+                                    <input class="search_input" id="search_input" type="text" autocomplete="off" name="search" placeholder="Nhập title..." />
+                                </form>
+                            </div>
                             <select name="" id="cate">
                                 <option value="">Chọn chuyên mục</option>
                                 <?php $list_cate = chuyen_muc(['parent' => 0]);
