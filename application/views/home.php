@@ -40,7 +40,7 @@
                 </div>
                 <div class="content_cate">
                     <?php foreach ($list_cate_1 as $key => $val) {
-                        if ($key == 0) { ?>
+                    if ($key == 0) { ?>
                     <div class="left_content">
                         <div class="cont_thumb">
                             <a href="/<?= $val['alias'] ?>/">
@@ -64,8 +64,11 @@
                             </a>
                         </div>
                     </div>
+                    <?php }
+                    } ?>
                     <div class="right_content">
-                        <?php } else if($key > 0) { ?>
+                        <?php foreach ($list_cate_1 as $key => $val) {
+                        if ($key > 0) { ?>
                         <a class="small_item" href="/<?= $val['alias'] ?>/">
                             <div class="small_img">
                                 <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
@@ -114,8 +117,11 @@
                             </a>
                         </div>
                     </div>
+                    <?php }
+                    } ?>
                     <div class="right_content">
-                        <?php } else if($key > 0) { ?>
+                        <?php foreach ($list_cate_2 as $key => $val) {
+                        if ($key > 0) { ?>
                         <a class="small_item" href="/<?= $val['alias'] ?>/">
                             <div class="small_img">
                                 <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
@@ -146,16 +152,16 @@
                         <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
                         <div class="box_content_blog box_content_blog_left">
                             <p class="date_post"><?php $cate = chuyen_muc(['id' => $val['chuyenmuc']]);
-                                            echo $cate[0]['name']; ?></p>
+                                        echo $cate[0]['name']; ?></p>
                             <p class="title_blog"><?= $val['title'] ?></p>
                         </div>
                     </a>
                 </div>
                 <!-- <div class="left_line">
-                    <div class="line_home"></div>
-                  </div> -->
+                <div class="line_home"></div>
+                </div> -->
                 <?php }
-                  } ?>
+                } ?>
             </div>
         </div>
     </div>
