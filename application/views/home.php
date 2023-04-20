@@ -10,9 +10,8 @@
               <p class="date_post"><?= date('d-m-Y', $blog[0]['created_at']) ?></p>
             </div>
             <p class="title_blog_top"><?= $blog[0]['title'] ?></p>
-          </div>
         </a>
-            
+      </div>
       <div class="list_blog_home">
         <!-- <p class="title_left_home none_pc">TIN MỚI NHẤT</p> -->
         <?php foreach ($blog as $key => $val) {
