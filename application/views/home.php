@@ -142,7 +142,7 @@
         </div>
         <div class="left_home">
             <div class="content_left">
-                <p class="title_left_home">TIN NỔI BẬT</p>
+                <p class="title_left_home">TIN MỚI NHẤT</p>
                 <?php foreach ($blog as $key => $val) {
                     if ($key < 6) { ?>
                         <div class="this_content_left">
