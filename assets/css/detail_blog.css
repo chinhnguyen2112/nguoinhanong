@@ -316,7 +316,7 @@ figcaption {
     font-size: 25px !important;
     line-height: 32px !important;
     color: #000 !important;
-    font-style: italic;
+    /* font-style: italic; */
     /* margin-top: 0; */
     margin: 12px 0 !important;
 }
