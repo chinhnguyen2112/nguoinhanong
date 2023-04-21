@@ -1,4 +1,4 @@
-    <?php
+<?php
     error_reporting(1);
     defined('BASEPATH') or exit('No direct script access allowed');
     class Admin extends CI_Controller
@@ -227,15 +227,16 @@
         public function list_blog()
         {
             if (admin()) {
-                $tag = $this->input->get('tag');
+                // $tag = $this->input->get('tag');
+                $key_search = $this->input->get('key_search');
                 $cate = $this->input->get('cate');
                 $x = 0;
-                $where['id >'] = 0;
-                if ($tag != '') {
-                    $where['FIND_IN_SET(tag,' .  $tag . ') AND id >'] = 0;
-                }
+                $where=' id > 0  ';
                 if ($cate > 0) {
-                    $where['chuyenmuc'] = $cate;
+                    $where .=" AND ( chuyenmuc=  $cate  OR cate_parent = $cate ) ";
+                }
+                if ($key_search != '') {
+                    $where .= " AND  title LIKE '%$key_search%' ";
                 }
                 $page = $this->uri->segment(2);
                 if ($page < 1 || $page == '') {

@@ -64,6 +64,8 @@ $route['add_chuyenmuc'] = 'Admin/view_add_chuyenmuc';
 $route['ajax_add_chuyenmuc'] = 'Admin/ajax_add_chuyenmuc';
 $route['list_chuyenmuc'] = 'Admin/list_chuyenmuc';
 $route['list_chuyenmuc/(:num)'] = 'Admin/list_chuyenmuc';
+$route['search_blogs'] = 'Admin/search_blogs';
+$route['search_blogs/(:num)'] = 'Admin/search_blogs/$1';
 
 //search
 $route['result_search'] = 'Home/view_result_search';

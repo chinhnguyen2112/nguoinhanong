@@ -17,14 +17,6 @@ $(document).ready(function() {
 				method: "GET",
 				data:{key_search:key_search},
 				success:function(data) {
-					$('#search_result').html(data);
-					$('#search_result').css('display', 'block');
-					$("#live_search").focusout(function () {
-						$('#search_result').css('display', 'none');
-					});
-					$("#live_search").focusin(function () {
-						$('#search_result').css('display', 'block');
-					});
 				}
 			});
 		} else {
