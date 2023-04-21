@@ -122,6 +122,7 @@ h4,
 }
 .content_blog a, .content_blog a span, .content_blog a p  {
     color: #86d05f !important;
+    font-size: 17px !important;
 }
 
 h5,
