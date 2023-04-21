@@ -35,13 +35,13 @@ class Home extends CI_Controller
         $data['blog'] = $this->Madmin->get_limit($where, 'blogs', 0, 19);
         $data['blog_update'] = $this->Madmin->query_sql("SELECT * FROM blogs WHERE type = 0 ORDER BY updated_at DESC LIMIT 10");
         // list cate 1
-        $name_cate_1 = $this->Madmin->query_sql_row("SELECT * FROM category  WHERE id = 4 ");
-        $list_cate_1 = $this->Madmin->query_sql("SELECT * FROM blogs WHERE chuyenmuc = 4 AND type = 0 ORDER BY id DESC LIMIT 5");
+        $name_cate_1 = $this->Madmin->query_sql_row("SELECT * FROM category  WHERE id = 1 ");
+        $list_cate_1 = $this->Madmin->query_sql("SELECT * FROM blogs WHERE chuyenmuc = 1 AND type = 0 ORDER BY id DESC LIMIT 5");
         $data['list_cate_1'] = $list_cate_1;
         $data['name_cate_1'] = $name_cate_1;
         // list cate 2
-        $name_cate_2 = $this->Madmin->query_sql_row("SELECT * FROM category WHERE id = 9");
-        $list_cate_2 = $this->Madmin->query_sql("SELECT * FROM blogs WHERE chuyenmuc = 9 AND type = 0 ORDER BY id DESC LIMIT 5");
+        $name_cate_2 = $this->Madmin->query_sql_row("SELECT * FROM category WHERE id = 2");
+        $list_cate_2 = $this->Madmin->query_sql("SELECT * FROM blogs WHERE chuyenmuc = 2 AND type = 0 ORDER BY id DESC LIMIT 5");
         $data['list_cate_2'] = $list_cate_2;
         $data['name_cate_2'] = $name_cate_2;
         $data['meta_title'] = 'Người Nhà Nông: Đồng hành cùng bà con nông dân phát triển';
