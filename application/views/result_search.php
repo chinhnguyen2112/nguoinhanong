@@ -16,15 +16,14 @@
                             <a class="img_item" href="/<?= $val['alias'] ?>/">
                                 <img src="/<?= $val['image'] ?>" />
                             </a>
-                            <a class="name_cate" href="/<?= $infor_cate['cate_alias'] ?>/">
-                                <?= $infor_cate['cate_name'] ?>
+                            <a class="name_cate" href="/<?= $val['cate_alias'] ?>/">
+                                <?= $val['cate_name'] ?>
                             </a>
                         </div>
                         <div class="right_item_content">
                             <a class="title_item_result" href="/<?= $val['alias'] ?>/"><?= $val['title'] ?></a>
                             <p class="date_blogs"><?= date('d-m-Y', $val['created_at']) ?></p>
                             <div class="sapo_blog"><?= $val['sapo'] ?></div>
-                            <a class="btn_see_more" href="/<?= $val['alias'] ?>/">READ MORE</a>
                         </div>
                     </div>
                 <?php } ?>
