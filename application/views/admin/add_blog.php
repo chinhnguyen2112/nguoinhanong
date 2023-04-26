@@ -243,6 +243,10 @@
             <option <?= (isset($blog) && $blog['type'] == 1) ? 'selected' : '' ?> value="1">Page</option>
         </select>
     </div>
+    <div class="form-group mb-3">
+        <label class="label" for="name">Hẹn giờ đăng </label>
+        <input type="datetime-local" name="time_post" id="" value="<?= date("Y-m-d\TH:i:s", $time_post) ?>" class="form-control">
+    </div>
     <div class="form-group">
         <button type="submit" class="form-control btn btn-primary submit px-3"><?= (isset($id)) ? "Sửa" : "Thêm mới" ?></button>
     </div>
