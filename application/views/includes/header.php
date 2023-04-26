@@ -37,7 +37,7 @@
             </a>
         </div>
         <div class="input_search_none_pc" id="input_search_none_pc">
-            <form id="search" method="get" action="search">
+            <form id="search" method="get" action="/search">
                 <input class="search_input" id="search_input" type="text" autocomplete="off" name="search" placeholder="Tìm kiếm..." />
                 <!-- <a class="btn_search">
                     <img class="img_search" src="/images/icon-search.png"/>
