@@ -118,9 +118,12 @@ h4,
     line-height: 30px !important;
     font-weight: 500 !important;
     margin-bottom: 12px !important;
-    color: #0040ff !important;
+    color: #000 !important;
 }
-.content_blog a, .content_blog a span, .content_blog a p  {
+
+.content_blog a,
+.content_blog a span,
+.content_blog a p {
     color: #86d05f !important;
     font-size: 17px !important;
 }
@@ -132,7 +135,7 @@ h6 span,
 h5 p,
 h6 p {
     font-weight: 500 !important;
-    color: #0040ff !important;
+    color: #000 !important;
 }
 
 .widget_home {
@@ -594,14 +597,17 @@ td:first-child {
         line-height: unset !important;
     }
 }
+
 @media only screen and (max-width: 768px) {
     .list_blog_same {
         justify-content: space-between;
     }
+
     .this_handbook {
         width: 30%;
     }
 }
+
 @media only screen and (max-width: 540px) {
 
     .breadcrumb p,
@@ -690,6 +696,7 @@ td:first-child {
         gap: 5px;
     }
 }
+
 @media only screen and (max-width: 375px) {
     .this_handbook img {
         width: 100%;

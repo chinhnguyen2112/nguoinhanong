@@ -139,6 +139,59 @@
                     </div>
                 </div>
             </div>
+            <div class="list_cate_home">
+                <div class="title_cate">
+                    <span class="title_cate_top"><?= $name_cate_3['name'] ?></span>
+                </div>
+                <div class="content_cate">
+                    <?php foreach ($list_cate_3 as $key => $val) {
+                        if ($key == 0) { ?>
+                            <div class="left_content">
+                                <div class="cont_thumb">
+                                    <a href="/<?= $val['alias'] ?>/">
+                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
+                                    </a>
+                                    <span class="link_cate">
+                                        <a href="/<?= $name_cate_3['alias'] ?>"><?= $name_cate_3['name'] ?></a>
+                                    </span>
+                                </div>
+                                <div class="big_item">
+                                    <div class="big_title">
+                                        <a href="/<?= $val['alias'] ?>/"><?= $val['title'] ?></a>
+                                    </div>
+                                    <a href="/<?= $val['alias'] ?>/">
+                                        <div class="big_infor">
+                                            <p class="big_created"><?= date('d-m-Y', $val['created_at']) ?></p>
+                                        </div>
+                                        <div class="big_content">
+                                            <div class="big_sapo"><?= $val['sapo'] ?></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                    <?php }
+                    } ?>
+                    <div class="right_content">
+                        <?php foreach ($list_cate_3 as $key => $val) {
+                            if ($key > 0) { ?>
+                                <a class="small_item" href="/<?= $val['alias'] ?>/">
+                                    <div class="small_img">
+                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
+                                    </div>
+                                    <div class="small_content">
+                                        <div class="small_title">
+                                            <p><?= $val['title'] ?></p>
+                                        </div>
+                                        <div class="small_date">
+                                            <i class="fa fa-clock-o"><?= date('d-m-Y', $val['created_at']) ?></i>
+                                        </div>
+                                    </div>
+                                </a>
+                        <?php }
+                        } ?>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="left_home">
             <div class="content_left">
