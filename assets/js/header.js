@@ -8,22 +8,7 @@ function show_menu(e, type) {
 	}
 }
 
-$(document).ready(function() {
-	$('#search').submit(function() {
-		var key_search = $('#search_input').val();
-		if(key_search != '') {
-			$.ajax({
-				url: "/search",
-				method: "GET",
-				data:{key_search:key_search},
-				success:function(data) {
-				}
-			});
-		} else {
-			$('.search_result').css("display","none");
-		}
-	});
-});
+
 
 function openList() {
 	var sidenav = document.getElementById("input_search_none_pc"),
