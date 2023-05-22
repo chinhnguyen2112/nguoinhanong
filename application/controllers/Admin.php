@@ -77,7 +77,7 @@ class Admin extends CI_Controller
         $id = $this->input->post('id');
         $time = time();
         $data['title'] = $this->input->post('title');
-        $data['time_post'] = strtotime($this->input->post('time_post'));
+        $data['time_post'] = $time_post =  strtotime($this->input->post('time_post'));
         $data['alias'] = $alias = $this->input->post('alias');
         $data['chuyenmuc'] = $chuyenmuc =  $this->input->post('category');
         $data['sapo'] = $this->input->post('sapo');
@@ -86,7 +86,7 @@ class Admin extends CI_Controller
         $data['meta_key']     = $this->input->post('meta_key');
         $data['meta_des']     = $this->input->post('meta_des');
         $data['type'] = $this->input->post('type');
-
+        $data['created_at'] = $time_post;
         $data['updated_at'] = $time;
         $cate = chuyen_muc(['id' => $chuyenmuc]);
         if ($cate[0]['parent'] > 0) {
@@ -140,7 +140,6 @@ class Admin extends CI_Controller
                     $insert_blog = $id;
                 }
             } else {
-                $data['created_at'] = $time;
                 $insert_blog = $this->Madmin->insert($data, 'blogs');
             }
             if ($insert_blog > 0) {
@@ -236,10 +235,14 @@ class Admin extends CI_Controller
             // $tag = $this->input->get('tag');
             $key_search = $this->input->get('key_search');
             $cate = $this->input->get('cate');
+            $child_cate = $this->input->get('child_cate');
             $x = 0;
             $where = ' id > 0  ';
             if ($cate > 0) {
                 $where .= " AND ( chuyenmuc=  $cate  OR cate_parent = $cate ) ";
+            }
+            if ($child_cate > 0) {
+                $where .= " AND ( chuyenmuc =  $child_cate ) ";
             }
             if ($key_search != '') {
                 $where .= " AND  title LIKE '%$key_search%' ";
@@ -253,6 +256,7 @@ class Admin extends CI_Controller
             $list = $this->Madmin->get_list($where, 'blogs');
             pagination('/list_blog', count($list), $limit);
             $data['list'] = $this->Madmin->get_limit($where, 'blogs', $start, $limit);
+            $data['count_list'] = count($list);
             $data['content'] = '/admin/list_blog';
             $this->load->view('admin/index', $data);
         } else {
@@ -340,6 +344,20 @@ class Admin extends CI_Controller
         } else {
             redirect('/admin/login/');
         }
+    }
+    public function ajax_child_cate()
+    {
+        $cate_id = $this->input->post('id');
+        if ($cate_id > 0) {
+            $where = [
+                'parent' => $cate_id
+            ];
+            $error =  $this->Madmin->get_list($where, 'category');
+        } else {
+            $error = [];
+        }
+
+        echo json_encode($error);
     }
     public function sitemap()
     {

@@ -221,7 +221,7 @@ figcaption {
     font-size: 16px;
     text-align: center;
     font-style: italic;
-    background: #ccc;
+    /* background: #ccc; */
     line-height: 28px;
 }
 
@@ -500,6 +500,11 @@ td:first-child {
 .content_blog table th p {
     text-align: center !important;
     font-weight: 700;
+}
+
+.this_des_handbook p,
+.this_des_handbook span {
+    margin: 0 !important;
 }
 
 @media only screen and (max-width: 1024px) {

@@ -196,22 +196,18 @@
         <div class="left_home">
             <div class="content_left">
                 <p class="title_left_home">TIN MỚI NHẤT</p>
-                <?php foreach ($blog as $key => $val) {
-                    if ($key < 6) { ?>
-                        <div class="this_content_left">
-                            <a class="linl_all_detail link_fl link_fl_left " title="<?= $val['title'] ?>" href="/<?= $val['alias'] ?>/">
-                                <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
-                                <div class="box_content_blog box_content_blog_left">
-                                    <p class="date_post"><?php $cate = chuyen_muc(['id' => $val['chuyenmuc']]);
-                                                            echo $cate[0]['name']; ?></p>
-                                    <p class="title_blog"><?= $val['title'] ?></p>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- <div class="left_line">
-                <div class="line_home"></div>
-                </div> -->
-                <?php }
+                <?php foreach ($blog_update as $key => $val) { ?>
+                    <div class="this_content_left">
+                        <a class="linl_all_detail link_fl link_fl_left " title="<?= $val['title'] ?>" href="/<?= $val['alias'] ?>/">
+                            <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
+                            <div class="box_content_blog box_content_blog_left">
+                                <p class="date_post"><?php $cate = chuyen_muc(['id' => $val['chuyenmuc']]);
+                                                        echo $cate[0]['name']; ?></p>
+                                <p class="title_blog"><?= $val['title'] ?></p>
+                            </div>
+                        </a>
+                    </div>
+                <?php
                 } ?>
             </div>
         </div>
