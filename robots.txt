@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /*.js$
+Allow: /*.css$
+Disallow: /admin/
+Disallow: /*.html$
+Sitemap: https://nguoinhanong.vn/sitemap.xml

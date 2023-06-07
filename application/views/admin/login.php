@@ -88,7 +88,7 @@
             submitHandler: function() {
                 var formData = new FormData($('#frm_login')[0]);
                 $.ajax({
-                    url: "/login_admin",
+                    url: "/admin/login_admin",
                     type: "POST",
                     cache: false,
                     contentType: false,

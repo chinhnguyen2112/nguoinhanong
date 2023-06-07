@@ -54,26 +54,19 @@ $route['default_controller'] = 'Home/home';
 //admin
 $route['admin'] = 'Admin/admin';
 $route['admin/login'] = 'Admin/view_login';
-$route['login_admin'] = 'Admin/login_admin';
-$route['login_admin'] = 'Admin/login_admin';
-$route['add_blog'] = 'Admin/view_add_blog';
-$route['ajax_add_blog'] = 'Admin/ajax_add_blog';
-$route['list_blog'] = 'Admin/list_blog';
-$route['list_blog/(:num)'] = 'Admin/list_blog';
-$route['add_chuyenmuc'] = 'Admin/view_add_chuyenmuc';
-$route['ajax_add_chuyenmuc'] = 'Admin/ajax_add_chuyenmuc';
-$route['list_chuyenmuc'] = 'Admin/list_chuyenmuc';
-$route['list_chuyenmuc/(:num)'] = 'Admin/list_chuyenmuc';
-$route['search_blogs'] = 'Admin/search_blogs';
-$route['search_blogs/(:num)'] = 'Admin/search_blogs/$1';
+$route['admin/login_admin'] = 'Admin/login_admin';
+$route['admin/login_admin'] = 'Admin/login_admin';
+$route['admin/add_blog'] = 'Admin/view_add_blog';
+$route['admin/ajax_add_blog'] = 'Admin/ajax_add_blog';
+$route['admin/list_blog'] = 'Admin/list_blog';
+$route['admin/list_blog/(:num)'] = 'Admin/list_blog';
+$route['admin/add_chuyenmuc'] = 'Admin/view_add_chuyenmuc';
+$route['admin/ajax_add_chuyenmuc'] = 'Admin/ajax_add_chuyenmuc';
+$route['admin/list_chuyenmuc'] = 'Admin/list_chuyenmuc';
+$route['admin/list_chuyenmuc/(:num)'] = 'Admin/list_chuyenmuc';
 
 //search
 $route['result_search'] = 'Home/view_result_search';
-
-$route['add_tag'] = 'Admin/view_add_tag';
-$route['ajax_add_tag'] = 'Admin/ajax_add_tag';
-$route['list_tag'] = 'Admin/list_tag';
-$route['list_tag/(:num)'] = 'Admin/list_tag';
 
 
 $route['bang-xep-hang'] = 'Home/bxh';

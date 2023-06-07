@@ -233,7 +233,7 @@
         submitHandler: function(form) {
             var data = new FormData($("#form")[0]);
             $.ajax({
-                url: '/ajax_add_chuyenmuc',
+                url: '/admin/ajax_add_chuyenmuc',
                 type: "POST",
                 cache: false,
                 contentType: false,

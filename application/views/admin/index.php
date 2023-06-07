@@ -68,28 +68,10 @@
                         </a>
                         <div class="collapse" id="ui-basicss">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="/add_blog">Bài viết mới</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/add_chuyenmuc">Thêm chuyên mục</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/list_blog">Danh sách bài viết</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/list_chuyenmuc">Danh sách chuyên mục</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-basicsss" aria-expanded="false" aria-controls="ui-basicsss">
-                            <i class="typcn typcn-document-text menu-icon"></i>
-                            <span class="menu-title">Tags</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="ui-basicsss">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="/add_tag">Thêm tags</a></li>
-                                <!-- <li class="nav-item"><a class="nav-link" href="/list_tag">Danh sách tags</a></li> -->
-                                <?php $CI = get_instance();
-                                $list_tag = tag(['parent' => 0]);
-                                foreach ($list_tag as $val) { ?>
-                                    <li class="nav-item"><a class="nav-link" href="/list_tag?keyword=&parent=<?= $val['id'] ?>/"><?= $val['name'] ?></a></li>
-                                <?php } ?>
+                                <li class="nav-item"><a class="nav-link" href="/admin/add_blog">Bài viết mới</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/admin/add_chuyenmuc">Thêm chuyên mục</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/admin/list_blog">Danh sách bài viết</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/admin/list_chuyenmuc">Danh sách chuyên mục</a></li>
                             </ul>
                         </div>
                     </li>

@@ -208,19 +208,6 @@
         </select>
     </div>
     <div class="form-group mb-3">
-        <label class="label" for="name">tag</label>
-        <select name="tag[]" id="tag" class="form-control select2" multiple>
-            <?php
-            $tag = tag();
-            $tag_blog = explode(',', $blog['tag']);
-            foreach ($tag as $key => $val) {
-                $name = $val['name'];
-            ?>
-                <option <?= (isset($blog) &&  in_array($val['id'], $tag_blog)) ? 'selected' : '' ?> value="<?= $val['id'] ?>"><?= $name ?></option>
-            <?php } ?>
-        </select>
-    </div>
-    <div class="form-group mb-3">
         <label class="label" for="name">Meta Title (50 > 60 kí tụ)</label>
         <input type="text" name="meta_title" value="<?= (isset($blog)) ? $blog['meta_title'] : ''; ?>" class="form-control">
     </div>
@@ -261,11 +248,6 @@
     editor.execute('removeFormat');
 </script>
 <script>
-    $('.select2').select2({
-        placeholder: 'Chọn tag',
-        'height': '100%'
-    });
-
     function get_alias(str) {
         str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
         str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
@@ -339,7 +321,7 @@
             data.append("content", CKEDITOR.instances.editor.getData());
             data.append("sapo", CKEDITOR.instances.sapo.getData());
             $.ajax({
-                url: '/ajax_add_blog',
+                url: '/admin/ajax_add_blog',
                 type: "POST",
                 cache: false,
                 contentType: false,

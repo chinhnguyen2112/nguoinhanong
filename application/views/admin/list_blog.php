@@ -1,6 +1,8 @@
 <style>
     * {
+
         font-family: "Poppins", sans-serif;
+
     }
 
     .white_text {
@@ -9,25 +11,33 @@
         height: 100%;
         border: none;
         background: linear-gradient(95.83deg, #8AC02C 68.93%, #398100 113.08%);
+
         color: #fff;
+
     }
 
     .a_excel {
         border-radius: 5px;
         border: none;
         background: linear-gradient(95.83deg, #8AC02C 68.93%, #398100 113.08%);
+
         color: #fff;
+
     }
 
     .box_search_forrm {
         margin: 10px auto;
         padding: 10px;
+
         max-width: 100%;
+
     }
 
     .box_search_forrm p {
         text-align: center;
+
         font-size: 25px;
+
     }
 
     .box_search_forrm input,
@@ -36,11 +46,15 @@
         height: 35px;
         margin: 0 5px 5px 0;
         padding: 0 5px;
+
         color: #5f5f5f;
+
     }
 
     input:focus {
+
         border: 1px solid;
+
     }
 
     .box_search_forrm button {
@@ -49,18 +63,23 @@
         height: 35px;
         border: none;
         background: linear-gradient(95.83deg, #8AC02C 68.93%, #398100 113.08%);
+
         color: #fff;
+
     }
 
     .box_search_forrm .key_search {
-        padding-left: 5px;
-    }
 
+        padding-left: 5px;
+
+    }
 
     .change_content_ul {
         display: flex;
         justify-content: space-between;
+
         padding: 0;
+
     }
 
     .change_content_li {
@@ -76,12 +95,16 @@
         color: #ffffff;
         justify-content: center;
         display: flex;
+
         align-items: center;
+
     }
 
     .change_content_li:hover {
         cursor: pointer;
+
         background: #ff2b2b;
+
     }
 
     .edit_job a,
@@ -90,37 +113,48 @@
         padding: 3px 5px;
         color: #fff !important;
         cursor: pointer;
+
         text-decoration: auto !important;
+
     }
 
     .del_job,
+
     .delete_job,
     .del_list {
         background: red;
         padding: 3px 5px;
         color: #fff;
+
         cursor: pointer;
+
     }
 
     .link_add a {
         background: #6fc700;
         padding: 3px 5px;
         color: #fff;
+
         cursor: pointer;
+
     }
 
     .input-group select,
     .input-group input {
         width: 100%;
         height: 100%;
+
         border: 1px solid #ccc !important;
+
     }
 
     .list_tag {
         width: 300px;
         display: flex;
         flex-wrap: wrap;
+
         gap: 5px;
+
     }
 
     @media only screen and (max-width: 540px) {
@@ -128,6 +162,7 @@
         .box_search_forrm input,
         .box_search_forrm select {
             width: 100%;
+
         }
 
         .change_content_li {
@@ -136,27 +171,37 @@
             font-size: 12px;
             line-height: 18px;
             font-weight: 400;
+
         }
 
         .change_content_li:last-child {
             margin-right: 0;
+
         }
 
         .card .card-body {
             padding: 10px;
+
         }
+
     }
 
     @media only screen and (max-width: 375px) {
         .change_content_li {
             font-size: 10px;
+
         }
+
     }
 </style>
+
 <?php $CI = &get_instance();  ?>
+
 <div class="change_content">
     <ul class="change_content_ul">
+
         <li class="change_content_li" data-active="1">Danh sách bài viết</li>
+
     </ul>
     <div class="main_change">
         <div class="doing">
@@ -192,7 +237,7 @@
                                         <th>Tiêu đề</th>
                                         <th>Xem tin</th>
                                         <th>Chuyên mục</th>
-                                        <th style="width:300px">Tags</th>
+                                        <th style="width:300px">URL</th>
                                         <th style="width:50px">Type</th>
                                         <th>Ngày đăng</th>
                                     </tr>
@@ -205,6 +250,7 @@
                                             <td class="text-center"><?= $val['id']; ?></td>
                                             <td><?= $val['title'] ?></td>
                                             <td><a href="/<?= $val['alias'] ?>" target="_blank">Xem tin</a></td>
+
                                             <td>
 
                                                 <?php
@@ -216,19 +262,7 @@
                                                 // }
                                                 ?>
                                             </td>
-                                            <td style="width:300px">
-                                                <div class="list_tag">
-                                                    <?php
-                                                    if ($val['tag'] != '') {
-                                                        $tag = explode(',', $val['tag']);
-                                                        foreach ($tag as $key_tag => $val_tag) {
-                                                            $this_tag = tag(['id' => $val_tag]);
-                                                            $tag_parent = tag(['id' => $this_tag[0]['parent']]);
-                                                            echo '<a style=" background: #ff4504; padding: 2px 5px; color: #fff;" href="/' . $tag_parent[0]['alias'] . '/' . $this_tag[0]['alias'] . '/">' . $this_tag[0]['name'] . '</a>';
-                                                        }
-                                                    }
-                                                    ?></div>
-                                            </td>
+                                            <td style="width:300px"><?= 'https://nguoinhanong.vn/' . $val['alias'] . '/' ?></td>
                                             <td style="width:50px">
                                                 <!-- <span><?= $val['type']  ?></span> -->
                                                 <span>
@@ -246,6 +280,7 @@
                                                 <div class="btn-group">
                                                     <a href="/add_blog?id=<?= $val['id']; ?>" target="_blank">
                                                         <button style="font-size: 16px;" class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Sửa tài khoản"><i class="fa fa-pencil"></i> Sửa</button>
+
                                                     </a>
 
                                                 </div>
@@ -259,20 +294,23 @@
                     </div>
                 </div>
             </div>
+
         </div>
-
-
     </div>
 
+
+
 </div>
+
 <script>
     function filter_ds() {
-        // var tag = $('#tag').val();
         var key_search = $('#key_search').val();
         var cate = $('#cate').val();
         var child_cate = $('#child_cate').val();
-        var url = '/list_blog?key_search=' + key_search + '&cate=' + cate + '&child_cate=' + child_cate;
+        var url = '/admin/list_blog?key_search=' + key_search + '&cate=' + cate + '&child_cate=' + child_cate;
+
         window.location.href = url;
+
     }
     $('#cate').change(function() {
         var id_cate = $(this).val();
@@ -293,25 +331,8 @@
                     $('#child_cate').html(html);
                 }
             }
+
         });
+
     })
-    // function filter_blogs() {
-    //     var key_search = $('#key_search').val();
-    //     var val_select = $('#cate').val();
-    //     $('#search_blogs').submit(function() {
-    //         if (key_search != '' && val_select != '') {
-    //             $.ajax({
-    //                 url: '/search_blogs',
-    //                 method: 'GET',
-    //                 data: {
-    //                     key_search: key_search,
-    //                     val_select: val_select
-    //                 },
-    //                 success: function(data) {}
-    //             });
-    //         } else {
-    //             alert("rỗng");
-    //         }
-    //     });
-    // };
 </script>

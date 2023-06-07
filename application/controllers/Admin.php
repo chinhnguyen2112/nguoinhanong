@@ -64,7 +64,7 @@ class Admin extends CI_Controller
                     }
                     $data['blog'] = $blog;
                 } else {
-                    redirect('/add_blog');
+                    redirect('/admin/add_blog');
                 }
             }
             $this->load->view('admin/index', $data);
@@ -91,9 +91,6 @@ class Admin extends CI_Controller
         $cate = chuyen_muc(['id' => $chuyenmuc]);
         if ($cate[0]['parent'] > 0) {
             $data['cate_parent'] = $cate[0]['parent'];
-        }
-        if ($this->input->post('tag') != '') {
-            $data['tag'] =  implode(',', $this->input->post('tag'));
         }
         if (!is_dir('upload/blog/')) {
             mkdir('upload/blog/', 0755, TRUE);
@@ -167,7 +164,7 @@ class Admin extends CI_Controller
                 if ($chuyenmuc != null) {
                     $data['chuyenmuc'] = $chuyenmuc;
                 } else {
-                    redirect('/add_chuyenmuc');
+                    redirect('/admin/add_chuyenmuc');
                 }
             }
             $this->load->view('admin/index', $data);
@@ -214,14 +211,14 @@ class Admin extends CI_Controller
     public function list_chuyenmuc()
     {
         if (admin()) {
-            $page = $this->uri->segment(2);
+            $page = $this->uri->segment(3);
             if ($page < 1 || $page == '') {
                 $page = 1;
             }
             $limit = 20;
             $start = $limit * ($page - 1);
             $list = $this->Madmin->get_list('', 'category');
-            pagination('/list_chuyenmuc', count($list), $limit);
+            pagination('/admin/list_chuyenmuc', count($list), $limit, 3);
             $data['list'] = $this->Madmin->get_limit('', 'category', $start, $limit);
             $data['content'] = '/admin/list_chuyenmuc';
             $this->load->view('admin/index', $data);
@@ -232,7 +229,6 @@ class Admin extends CI_Controller
     public function list_blog()
     {
         if (admin()) {
-            // $tag = $this->input->get('tag');
             $key_search = $this->input->get('key_search');
             $cate = $this->input->get('cate');
             $child_cate = $this->input->get('child_cate');
@@ -247,99 +243,17 @@ class Admin extends CI_Controller
             if ($key_search != '') {
                 $where .= " AND  title LIKE '%$key_search%' ";
             }
-            $page = $this->uri->segment(2);
+            $page = $this->uri->segment(3);
             if ($page < 1 || $page == '') {
                 $page = 1;
             }
             $limit = 20;
             $start = $limit * ($page - 1);
             $list = $this->Madmin->get_list($where, 'blogs');
-            pagination('/list_blog', count($list), $limit);
+            pagination('/admin/list_blog', count($list), $limit, 3);
             $data['list'] = $this->Madmin->get_limit($where, 'blogs', $start, $limit);
             $data['count_list'] = count($list);
             $data['content'] = '/admin/list_blog';
-            $this->load->view('admin/index', $data);
-        } else {
-            redirect('/admin/login/');
-        }
-    }
-
-    public function view_add_tag()
-    {
-        if (admin()) {
-            $data['content'] = '/admin/add_tag';
-            if ($this->input->get('id') > 0) {
-                $data['id'] = $id = $this->input->get('id');
-                $tag = $this->Madmin->get_by(['id' => $id], 'tags');
-                if ($tag != null) {
-                    $data['tag'] = $tag;
-                } else {
-                    redirect('/add_tag');
-                }
-            }
-            $this->load->view('admin/index', $data);
-        } else {
-            redirect('/admin/login/');
-        }
-    }
-    public function ajax_add_tag()
-    {
-        $id = $this->input->post('id');
-        $data['name'] = $this->input->post('name');
-        $data['alias'] = $alias = $this->input->post('alias');
-        $data['meta_key'] = $this->input->post('meta_key');
-        $data['meta_title'] = $this->input->post('meta_title');
-        $data['meta_des'] = $this->input->post('meta_des');
-        $data['content'] = $this->input->post('content');
-        $cate = $this->input->post('category');
-        $data['parent'] = 0;
-        if ($cate > 0) {
-            $data['parent'] = $cate;
-        }
-        if ($id > 0) {
-            $insert_tag = 0;
-            $update_tag = $this->Madmin->update(['id' => $id], $data, 'tags');
-            if ($update_tag) {
-                $insert_tag = $id;
-            }
-        } else {
-            $insert_tag = $this->Madmin->insert($data, 'tags');
-        }
-        if ($insert_tag > 0) {
-            $response = [
-                'status' => 1,
-                'msg' => 'Thành công'
-            ];
-        } else {
-            $response = [
-                'status' => 0,
-                'msg' => 'Thất bại'
-            ];
-        }
-        echo json_encode($response);
-    }
-    public function list_tag()
-    {
-        if (admin()) {
-            $keyword = $this->input->get('keyword');
-            $parent = $this->input->get('parent');
-            $where['id >'] = 0;
-            if ($keyword != '') {
-                $where['name LIKE '] = '%' . $keyword . '%';
-            }
-            if ($parent > 0) {
-                $where['parent'] = $parent;
-            }
-            $page = $this->uri->segment(2);
-            if ($page < 1 || $page == '') {
-                $page = 1;
-            }
-            $limit = 20;
-            $start = $limit * ($page - 1);
-            $list = $this->Madmin->get_list($where, 'tags');
-            pagination('/list_tag', count($list), $limit);
-            $data['list'] = $this->Madmin->get_limit($where, 'tags', $start, $limit);
-            $data['content'] = '/admin/list_tag';
             $this->load->view('admin/index', $data);
         } else {
             redirect('/admin/login/');

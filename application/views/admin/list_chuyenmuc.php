@@ -174,7 +174,7 @@
                                                 echo $cate_parent[0]['name']; ?></td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    <a href="/add_chuyenmuc?id=<?= $val['id']; ?>" target="_blank">
+                                                    <a href="/admin/add_chuyenmuc?id=<?= $val['id']; ?>" target="_blank">
                                                         <button style="font-size: 16px;" class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Sửa tài khoản"><i class="fa fa-pencil"></i> Sửa</button>
                                                     </a>
                                                 </div>
