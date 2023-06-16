@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+set_status_header('404');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,133 +10,146 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<meta name="robots" content="noodp,noindex,nofollow" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>404 Page Not Found</title>
-	<link rel="stylesheet" href="/assets/css/font.css">
-	<style type="text/css">
-		/* ::selection {
-			background-color: #E13300;
-			color: white;
-		}
-
-		::-moz-selection {
-			background-color: #E13300;
-			color: white;
-		}
-
-		body {
-			background-color: #fff;
-			margin: 40px;
-			font: 13px/20px normal Helvetica, Arial, sans-serif;
-			color: #4F5155;
-		}
-
-		a {
-			color: #003399;
-			background-color: transparent;
-			font-weight: normal;
-		}
-
-		h1 {
-			color: #444;
-			background-color: transparent;
-			border-bottom: 1px solid #D0D0D0;
-			font-size: 19px;
-			font-weight: normal;
-			margin: 0 0 14px 0;
-			padding: 14px 15px 10px 15px;
-		}
-
-		code {
-			font-family: Consolas, Monaco, Courier New, Courier, monospace;
-			font-size: 12px;
-			background-color: #f9f9f9;
-			border: 1px solid #D0D0D0;
-			color: #002166;
-			display: block;
-			margin: 14px 0 14px 0;
-			padding: 12px 10px 12px 10px;
-		}
-
-		#container {
-			margin: 10px;
-			border: 1px solid #D0D0D0;
-			box-shadow: 0 0 8px #D0D0D0;
-		}
-
-		p {
-			margin: 12px 15px 12px 15px;
-		} */
-		body {
-			font-family: helvetica, arial, sans-serif !important;
-			height: 100vh;
-			margin: unset;
-		}
-
-		.body_404 {
+	<style>
+		.error_main {
 			display: flex;
-			flex-direction: column;
-			height: 100vh;
+			max-height: 100vh;
+			align-items: center;
+		}
+
+		.error404 {
+			align-items: center;
+			display: flex;
+			max-width: 90%;
+			padding: 100px 0;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		.img_error img {
+			width: 480px;
+		}
+
+		.content_error h3 {
+			color: #30425B;
+			font-size: 48px;
+			font-weight: 500;
+			line-height: 57px;
+			max-width: 460px;
+		}
+
+		.list_contact {
+			display: flex;
 			justify-content: center;
 		}
 
-		.box_text p {
-			margin: auto;
-			font-size: 24px;
-			margin-bottom: 40px;
-			text-align: center;
+		.item_contact {
+			margin: 0 10px;
 		}
 
-		.btn_404 {
-			text-align: center;
+		.item_contact p {
+			color: #666;
+			font-size: 12px;
+			line-height: 17px;
+			margin-bottom: 5px;
 		}
 
-		.btn_404 a {
-			font-family: helvetica, arial, sans-serif !important;
-			color: #fff;
+		.item_contact a {
+			background: #2a5b84;
+			font-size: 16px;
+			font-weight: bold;
+			padding: 5px 0;
+			border-radius: 20px;
+			justify-content: center;
+			text-align: center;
+			display: flex;
 			align-items: center;
-			font-size: 18px;
-			padding: 13.5px 14px;
-			text-decoration: unset;
-			background: #2758DD;
-			border-radius: 4px;
+			width: 180px;
+			text-decoration: none;
+			color: #fff;
+			height: 30px;
 		}
 
-		.div_img {
-			width: 100%;
-			text-align: center;
+		.item_contact img {
+			padding: 7px 2px;
+			width: 20px;
+			background: #fff;
+			border-radius: 50%;
 		}
 
-		.div_img img {
-			width: 320px;
-			margin-top: -80px;
-			margin-bottom: 30px;
+		.text_back {
+			color: #fff !important;
+			padding: 0 !important;
+			margin: 0 0 0 5px !important;
+			font-size: 16px !important;
+			font-weight: bold;
 		}
 
-		@media only screen and (max-width: 520px) {
-			.div_img img {
-				/* margin: 60px auto 50px; */
+		@media only screen and (max-width: 768px) {
+			.error404 {
+				flex-direction: column;
+				padding: 40px 20px 30px;
+				text-align: center;
 			}
 
-			.btn_404 a {
-				padding: 10px 25px;
+			.img_error img {
+				width: 280px;
+			}
+
+			.content_error h3 {
+				color: #30425B;
+				font-size: 20px;
+				font-weight: 500;
+				line-height: 24px;
+				margin: 20px auto;
+				max-width: 250px;
+			}
+		}
+
+		@media only screen and (max-width: 540px) {
+			.error_main {
+				min-height: auto;
+			}
+
+			.error404 {
+				padding: 40px 0 30px;
+			}
+
+			.item_contact a {
+				width: 130px;
+				font-size: 12px;
+				padding: 2px 5px;
+			}
+
+			.text_back {
+				font-size: 12px !important;
 			}
 		}
 	</style>
 </head>
 
 <body>
-	<!-- <div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
-	</div> -->
-	<div class="body_404">
-		<div class="div_img">
-			<img src="/images/404.svg" alt="404">
-		</div>
-		<div class="box_text">
-			<p>Không tìm thấy đường dẫn này</p>
-		</div>
-		<div class="btn_404">
-			<a href="/">Trở về trang chủ</a>
+	<div class="error_main">
+		<div class="error404">
+			<div class="img_error">
+				<img src="/images/404.png" alt="image 404">
+			</div>
+			<div class="content_error">
+				<h3>Xin lỗi, chúng tôi không tìm thấy trang bạn cần!</h3>
+				<div class="list_contact">
+					<div class="item_contact">
+						<p>Trở về trang chủ<br>Người Nhà Nông</p>
+						<a href="/">
+							<img src="/images/favicon.png" alt="logo">
+							<p class="text_back">Người Nhà Nông</p>
+						</a>
+					</div>
+					<div class="item_contact">
+						<p>Liên hệ hỗ trợ miễn phí<br>(7h30 - 22h)</p>
+						<a href="#">lienhe@nguoinhanong.vn</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

@@ -74,7 +74,7 @@ class Home extends CI_Controller
         $tags = $this->Madmin->get_by(['alias' => $alias], 'tags');
         if ($chuyenmuc != null) { //chuyenmuc
             if ($_SERVER['REQUEST_URI'] != '/' . $alias . '/') {
-                redirect('/' . $alias . '/');
+                redirect('/' . $alias . '/', 'location', 301);
             }
             $page = $this->uri->segment(3);
             if ($page < 1 || $page == '') {
@@ -108,7 +108,7 @@ class Home extends CI_Controller
             ];
         } else if ($blog != null) { // blog
             if ($_SERVER['REQUEST_URI'] != '/' . $alias . '/') {
-                redirect('/' . $alias . '/');
+                redirect('/' . $alias . '/', 'location', 301);
             }
             if (!admin() && $blog['time_post'] > $time_now) {
                 redirect('/');
@@ -138,7 +138,7 @@ class Home extends CI_Controller
             }
         } else if ($tags != null) {
             if ($_SERVER['REQUEST_URI'] != '/' . $alias . '/') {
-                redirect('/' . $alias . '/');
+                redirect('/' . $alias . '/', 'location', 301);
             }
             $id_parent = $tags['id'];
             $list_tag = $this->Madmin->query_sql("SELECT *  FROM tags  WHERE parent = $id_parent ");
@@ -176,7 +176,7 @@ class Home extends CI_Controller
             ];
             $data['index'] = 1;
         } else {
-            redirect('/');
+            redirect('/', 'location', 301);
         }
         $this->load->view('index', $data);
     }
@@ -188,7 +188,7 @@ class Home extends CI_Controller
         $tags = $this->Madmin->get_by(['alias' => $alias2, 'parent >' => 0], 'tags');
         if ($tags['parent'] == $tags_parent['id']) {
             if ($_SERVER['REQUEST_URI'] != '/' . $alias1 . '/' . $alias2 . '/') {
-                redirect('/' . $alias1 . '/' . $alias2 . '/');
+                redirect('/' . $alias1 . '/' . $alias2 . '/', 'location', 301);
             }
             $id_tag = $tags['id'];
             $page = $this->uri->segment(3);
@@ -214,7 +214,7 @@ class Home extends CI_Controller
                 'chuyenmuc_blog.css',
             ];
         } else {
-            redirect('/');
+            redirect('/', 'location', 301);
         }
         $data['index'] = 1;
         $this->load->view('index', $data);
@@ -245,7 +245,7 @@ class Home extends CI_Controller
             $data['meta_img'] = $blog['image'];
             $this->load->view('index', $data);
         } else {
-            redirect('/');
+            redirect('/', 'location', 301);
         }
     }
     public function bxh()
