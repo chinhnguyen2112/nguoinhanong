@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-set_status_header('404');
 ?>
 <!DOCTYPE html>
 <html lang="en">

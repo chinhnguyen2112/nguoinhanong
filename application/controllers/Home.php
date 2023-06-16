@@ -176,7 +176,8 @@ class Home extends CI_Controller
             ];
             $data['index'] = 1;
         } else {
-            redirect('/', 'location', 301);
+            set_status_header(301);
+            return $this->load->view('errors/html/error_404');
         }
         $this->load->view('index', $data);
     }
