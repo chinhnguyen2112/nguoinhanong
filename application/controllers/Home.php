@@ -106,6 +106,7 @@ class Home extends CI_Controller
             $data['list_css'] = [
                 'chuyenmuc_blog.css',
             ];
+            $data['index'] = 1;
         } else if ($blog != null) { // blog
             if ($_SERVER['REQUEST_URI'] != '/' . $alias . '/') {
                 redirect('/' . $alias . '/', 'location', 301);
