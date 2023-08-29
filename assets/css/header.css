@@ -8,12 +8,12 @@ body {
 }
 
 .body_width {
-    max-width: 1240px;
+    max-width: 1140px;
     margin: auto;
 }
 
 .main_content {
-    padding-top: 51px;
+    padding-top: 90px;
 }
 
 .header_top {
@@ -206,7 +206,9 @@ img.img_logo_bot_header {
         position: absolute;
         right: 15px;
     }
-
+    .search {
+        display: none;
+    }
     .header_menu {
         display: none;
         height: unset;
