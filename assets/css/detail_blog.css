@@ -524,7 +524,7 @@ li .toc-ul {
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 600;
-    color: #cb0030;
+    color: #86d05f;
     padding-right: 15px;
 }
 
@@ -548,7 +548,7 @@ li .toc-ul {
     font-size: 12px;
     font-weight: 500;
     color: transparent;
-    background: linear-gradient(90deg, #cc0355 0, #ea003a 0, #5447a4 100%);
+    background: linear-gradient(90deg, #86d05f 0, #86d05f 0, #5b8940 100%);
     -webkit-background-clip: text;
 }
 
@@ -558,6 +558,7 @@ li .toc-ul {
     -webkit-line-clamp: 3;
     overflow: hidden;
     font-size: 14px !important;
+    font-style: initial !important;
 }
 
 .des_blog p,
@@ -570,6 +571,7 @@ li .toc-ul {
     text-align: left !important;
     font-weight: unset !important;
     display: inline;
+    font-style: initial !important;
 }
 
 figure {

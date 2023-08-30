@@ -46,7 +46,7 @@ if (count($menu_cate_parent) > 2) {
                         </div>
                         <div class="item_link_ft">
                             <span>
-                                <a href="#">
+                                <a href="/chan-nuoi/">
                                     <img src="/images/icon_arrow_ft.png" alt="icon arrow footer">
                                     Chăn nuôi
                                 </a>
