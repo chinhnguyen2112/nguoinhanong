@@ -148,7 +148,8 @@
 }
 
 .des_blog p,
-.des_blog span {
+.des_blog span,
+.des_blog em {
 	color: #000000 !important;
 	font-size: 14px !important;
 	line-height: 21px !important;

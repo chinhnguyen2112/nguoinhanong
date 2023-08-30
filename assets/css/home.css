@@ -154,7 +154,8 @@
 }
 .des_post p,
 .des_post span,
-.des_post strong {
+.des_post strong,
+des_post em {
     font-style: initial !important;
 }
 .link_detail {
