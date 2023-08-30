@@ -13,20 +13,20 @@ if (count($menu_cate_parent) > 2) {
                     <div class="contact_infor">
                         <ul>
                             <li>
-                                <img src="/images/icon_mail.png" alt="icon address">
-                                <p>Liên hệ quảng cáo: lienhe@nguoinhanong.vn</p>
-                            </li>
-                            <li>
-                                <img src="/images/icon_mail.png" alt="icon address">
-                                <p>Email: lienhe@nguoinhanong.vn</p>
-                            </li>
-                            <li>
-                                <img src="/images/icon_mail.png" alt="icon address">
-                                <p>Hỗ trợ & CSKH: Lienhe@nguoinhanong.vn</p>
-                            </li>
-                            <li>
                                 <img src="/images/icon_address.png" alt="icon address">
-                                <p>Địa Chỉ: Số 123 Nguyễn Trãi, Thanh Xuân, Hà Nội.</p>
+                                <p>Số 123 Nguyễn Trãi, Thanh Xuân, Hà Nội.</p>
+                            </li>
+                            <li>
+                                <img src="/images/icon_website.png" alt="icon website">
+                                <p>nguoinhanong.vn</p>
+                            </li>
+                            <li>
+                                <img src="/images/icon_mail.png" alt="icon email">
+                                <p>info@nguoinhanong.vn</p>
+                            </li>
+                            <li>
+                                <img src="/images/icon_fb.png" alt="icon facebook">
+                                <p>Fb.com/nguoinhanong.vn</p>
                             </li>
                         </ul>
                     </div>

@@ -107,7 +107,7 @@ class Ajax extends CI_Controller
             }
             $blog_cate_sql = "SELECT blogs.*,category.name as name_cate,category.alias as alias_cate,category.image as image_cate FROM blogs INNER JOIN category ON blogs.chuyenmuc = category.id WHERE  type = 0 AND time_post <= $time AND ($where) ORDER BY blogs.id  DESC LIMIT $page,  18";
         } else {
-            $blog_cate_sql = "SELECT blogs.*,category.name as name_cate,category.alias as alias_cate,category.image as image_cate FROM blogs INNER JOIN category ON blogs.chuyenmuc = category.id WHERE  type = 0 AND time_post <= $time ORDER BY blogs.id DESC LIMIT $page,  18";
+            $blog_cate_sql = "SELECT blogs.*,category.name as name_cate,category.alias as alias_cate,category.image as image_cate FROM blogs INNER JOIN category ON blogs.chuyenmuc = category.id WHERE  type = 0 AND time_post <= $time AND (chuyenmuc = $chuyen_muc OR cate_parent = $chuyen_muc) ORDER BY blogs.id DESC LIMIT $page,  18";
         }
         $blog_cate = $this->Madmin->query_sql($blog_cate_sql);
         $html = '';

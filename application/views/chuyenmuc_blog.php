@@ -66,3 +66,4 @@
         </div>
     </div>
 </div>
+<input id="chuyen_muc" value="<?= isset($chuyenmuc) ? $chuyenmuc : '' ?>" hidden />
