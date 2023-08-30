@@ -73,6 +73,7 @@ $route['bang-xep-hang'] = 'Home/bxh';
 
 //AJAX
 $route['load_more'] = 'Ajax/load_more';
+$route['load_more_cate'] = 'Ajax/load_more_cate';
 $route['search'] = 'Ajax/search';
 $route['search/(:num)'] = 'Ajax/search/$1';
 
