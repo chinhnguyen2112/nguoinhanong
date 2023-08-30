@@ -84,6 +84,13 @@ h2 {
     height: 15px;
     margin-right: 5px;
 }
+.list_contact {
+    display: flex;
+    flex-wrap: wrap;
+}
+.list_contact li {
+    width: max-content;
+}
 .ft_right {
     display: flex;
     width: 58%;
@@ -111,8 +118,13 @@ h2 {
     position: relative;
     bottom: -12px;
 }
+.list_links {
+    display: flex;
+    flex-wrap: wrap;
+}
 .item_link_ft {
     padding: 5px 0;
+    width: 50%;
 }
 .item_link_ft a {
     color: #eee;

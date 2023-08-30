@@ -11,22 +11,22 @@ if (count($menu_cate_parent) > 2) {
                 <div class="widget">
                     <p class="title_widget">Người Nhà Nông - Kênh chia sẻ kiến thức về nông nghiệp</p>
                     <div class="contact_infor">
-                        <ul>
-                            <li>
+                        <ul class="list_contact">
+                            <li style="width:100%">
                                 <img src="/images/icon_address.png" alt="icon address">
                                 <p>Số 123 Nguyễn Trãi, Thanh Xuân, Hà Nội.</p>
                             </li>
                             <li>
                                 <img src="/images/icon_website.png" alt="icon website">
-                                <p>nguoinhanong.vn</p>
+                                <p>nguoinhanong.vn -</p>
                             </li>
-                            <li>
+                            <li style="margin-left:3px">
                                 <img src="/images/icon_mail.png" alt="icon email">
                                 <p>info@nguoinhanong.vn</p>
                             </li>
                             <li>
                                 <img src="/images/icon_fb.png" alt="icon facebook">
-                                <p>Fb.com/nguoinhanong.vn</p>
+                                <p>fb.com/nguoinhanong.vn</p>
                             </li>
                         </ul>
                     </div>
@@ -36,18 +36,70 @@ if (count($menu_cate_parent) > 2) {
                 <div class="r_01">
                     <p class="title_r">CHUYÊN MỤC</p>
                     <div class="list_links">
-                        <?php $menu_cate_parent = chuyen_muc(['parent' => 0]);
-                        foreach ($menu_cate_parent as $val) {
-                            $menu_cate = chuyen_muc(['parent' => $val['id']]); ?>
-                            <div class="item_link_ft">
-                                <span>
-                                    <a href="/<?= $val['alias'] ?>/">
-                                        <img src="/images/icon_arrow_ft.png" alt="icon arrow footer">
-                                        <?= $val['name'] ?>
-                                    </a>
-                                </span>
-                            </div>
-                        <?php } ?>
+                        <div class="item_link_ft">
+                            <span>
+                                <a href="#">
+                                    <img src="/images/icon_arrow_ft.png" alt="icon arrow footer">
+                                    Văn hoá
+                                </a>
+                            </span>
+                        </div>
+                        <div class="item_link_ft">
+                            <span>
+                                <a href="#">
+                                    <img src="/images/icon_arrow_ft.png" alt="icon arrow footer">
+                                    Chăn nuôi
+                                </a>
+                            </span>
+                        </div>
+                        <div class="item_link_ft">
+                            <span>
+                                <a href="#">
+                                    <img src="/images/icon_arrow_ft.png" alt="icon arrow footer">
+                                    Kinh tế
+                                </a>
+                            </span>
+                        </div>
+                        <div class="item_link_ft">
+                            <span>
+                                <a href="#">
+                                    <img src="/images/icon_arrow_ft.png" alt="icon arrow footer">
+                                    Công nghệ
+                                </a>
+                            </span>
+                        </div>
+                        <div class="item_link_ft">
+                            <span>
+                                <a href="#">
+                                    <img src="/images/icon_arrow_ft.png" alt="icon arrow footer">
+                                    Lăng kính
+                                </a>
+                            </span>
+                        </div>
+                        <div class="item_link_ft">
+                            <span>
+                                <a href="#">
+                                    <img src="/images/icon_arrow_ft.png" alt="icon arrow footer">
+                                    Nông nghiệp
+                                </a>
+                            </span>
+                        </div>
+                        <div class="item_link_ft">
+                            <span>
+                                <a href="#">
+                                    <img src="/images/icon_arrow_ft.png" alt="icon arrow footer">
+                                    Nông thôn
+                                </a>
+                            </span>
+                        </div>
+                        <div class="item_link_ft">
+                            <span>
+                                <a href="#">
+                                    <img src="/images/icon_arrow_ft.png" alt="icon arrow footer">
+                                    Nông thôn mới
+                                </a>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="r_02">
