@@ -152,7 +152,11 @@
     overflow: hidden;
     margin-top: 5px;
 }
-
+.des_post p,
+.des_post span,
+.des_post strong {
+    font-style: initial !important;
+}
 .link_detail {
     text-decoration: none;
     color: #5dc2a7;
