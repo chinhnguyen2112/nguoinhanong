@@ -7,7 +7,7 @@ if (count($menu_cate_parent) > 2) {
     <div class="footer-widgets body_width">
         <div class="content_footer">
             <div class="ft_left">
-            <img class="logo_ft" src="/images/logo.png" alt="logo footer">
+                <img class="logo_ft" src="/images/logo.png" alt="logo footer">
                 <div class="widget">
                     <p class="title_widget">Người Nhà Nông - Kênh chia sẻ kiến thức về nông nghiệp</p>
                     <div class="contact_infor">
@@ -37,16 +37,16 @@ if (count($menu_cate_parent) > 2) {
                     <p class="title_r">CHUYÊN MỤC</p>
                     <div class="list_links">
                         <?php $menu_cate_parent = chuyen_muc(['parent' => 0]);
-                            foreach ($menu_cate_parent as $val) {
-                                $menu_cate = chuyen_muc(['parent' => $val['id']]); ?>
-                                <div class="item_link_ft">
-                                    <span>
-                                        <a href="/<?= $val['alias'] ?>/">
-                                            <img src="/images/icon_arrow_ft.png" alt="icon arrow footer">
-                                            <?= $val['name'] ?>
-                                        </a>
-                                    </span>
-                                </div>
+                        foreach ($menu_cate_parent as $val) {
+                            $menu_cate = chuyen_muc(['parent' => $val['id']]); ?>
+                            <div class="item_link_ft">
+                                <span>
+                                    <a href="/<?= $val['alias'] ?>/">
+                                        <img src="/images/icon_arrow_ft.png" alt="icon arrow footer">
+                                        <?= $val['name'] ?>
+                                    </a>
+                                </span>
+                            </div>
                         <?php } ?>
                     </div>
                 </div>
@@ -59,13 +59,6 @@ if (count($menu_cate_parent) > 2) {
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="text_footer">
-            <p>
-                <strong style="color:#EEE">Người Nhà Nông</strong>
-                <br>
-                Chia sẻ những thông tin hữu ích, cần thiết một cách nhanh chóng và mới nhất về canh tác nông nghiệp, thời vụ mùa màng đến bà con nông dân và những người yêu thích làm vườn để đạt hiệu quả cao.
-            </p>
         </div>
     </div>
     <div class="copyright">
