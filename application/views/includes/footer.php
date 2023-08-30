@@ -74,16 +74,13 @@ if (count($menu_cate_parent) > 2) {
             <div class="list_link_bottom">
                 <ul>
                     <li>
-                        <a href="#">Giới thiệu</a>
+                        <a href="/gioi-thieu/">Giới thiệu</a>
                     </li>
                     <li>
-                        <a href="#">Điều khoản</a>
+                        <a href="/lien-he/">Liên hệ</a>
                     </li>
                     <li>
-                        <a href="#">Chính sách</a>
-                    </li>
-                    <li>
-                        <a href="#">Liên hệ</a>
+                        <a href="/chinh-sach-bao-mat/">Chính sách</a>
                     </li>
                 </ul>
             </div>
