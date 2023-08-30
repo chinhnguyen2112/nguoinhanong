@@ -155,7 +155,8 @@
 	margin-top: 0 !important;
 	text-align: left !important;
 	font-weight: unset !important;
-	display: inline
+	display: inline;
+	font-style: initial !important;
 }
 
 .this_train a img {
