@@ -152,12 +152,6 @@
     overflow: hidden;
     margin-top: 5px;
 }
-.des_post p,
-.des_post span,
-.des_post strong,
-des_post em {
-    font-style: initial !important;
-}
 .link_detail {
     text-decoration: none;
     color: #5dc2a7;
@@ -263,11 +257,16 @@ des_post em {
 }
 
 .des_post p,
-.des_post span {
+.des_post span,
+.des_post strong,
+.des_post b,
+.des_post em {
     font-size: 14px !important;
     line-height: 21px !important;
     margin-top: 0 !important;
     text-align: left !important;
+    font-style: initial !important;
+    font-weight: unset !important;
 }
 
 .banner_all {
@@ -407,7 +406,13 @@ des_post em {
     font-size: 14px !important;
     line-height: 1.6 !important;
 }
-
+.big_sapo em,
+.big_sapo span,
+.big_sapo p,
+.big_sapo b {
+    font-style: initial !important;
+    font-weight: unset !important;
+}
 .big_created {
     color: #a0a0a0;
     text-transform: uppercase;
