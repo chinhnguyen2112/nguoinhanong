@@ -93,15 +93,14 @@ h2 {
     width: 58%;
 }
 .title_r {
-    height: 90px;
     font-weight: 600;
     color: #EEE;
     font-size: 18px;
     margin: 0 0 20px;
     text-transform: uppercase;
-    position: relative;
+    padding-top: 60px;
+    padding-bottom: 14px;
     border-bottom: none;
-    top: 50px;
 }
 .title_r::after {
     content: '';
