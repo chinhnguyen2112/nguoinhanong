@@ -79,3 +79,38 @@ if (mucluc != null && input1 != null) {
 		// }
 	}
 }
+var width_img = $(".this_train a img").width();
+var height_img = width_img / 1.73;
+$(".this_train a img").css("height", height_img);
+var page = 2;
+$(".load_more").click(function () {
+	var show_more = $(this);
+	var form_data = new FormData();
+	form_data.append("page", page);
+	form_data.append("name_page", "cate");
+	var id_chuyenmuc = $("#chuyen_muc").val();
+	form_data.append("id_chuyenmuc", id_chuyenmuc);
+	$.ajax({
+		url: "/load_more_cate",
+		type: "POST",
+		processData: false,
+		contentType: false,
+		dataType: "json",
+		data: form_data,
+		success: function (data) {
+			++page;
+			if (data.status == 0) {
+				$(".load_more").remove();
+			} else if (data.status == 1) {
+				show_more.before(data.html);
+				$(".this_train a img").css("height", height_img);
+				if (data.next == 0) {
+					$(".load_more").remove();
+				}
+			}
+		},
+		error: function () {
+			alert("error");
+		},
+	});
+});
