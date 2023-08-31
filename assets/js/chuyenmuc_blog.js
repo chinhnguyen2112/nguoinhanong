@@ -86,7 +86,6 @@ var page = 2;
 $(".load_more").click(function () {
 	var show_more = $(this);
 	var form_data = new FormData();
-	var id_chuyenmuc = $("#chuyen_muc").val();
 	form_data.append("page", page);
 	var id_chuyenmuc = $("#chuyen_muc").val();
 	form_data.append("id_chuyenmuc", id_chuyenmuc);
