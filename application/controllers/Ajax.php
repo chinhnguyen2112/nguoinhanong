@@ -105,27 +105,15 @@ class Ajax extends CI_Controller
             foreach ($list_tag as $val) {
                 $where .= ' OR FIND_IN_SET(' . $val['id'] . ',tag) ';
             }
-            $blog_cate_sql = "SELECT blogs.*,category.name as name_cate,category.alias as alias_cate,category.image as image_cate FROM blogs INNER JOIN category ON blogs.chuyenmuc = category.id WHERE  type = 0 AND time_post <= $time AND ($where) ORDER BY blogs.id  DESC LIMIT $page,  18";
+            $blog_cate_sql = "SELECT blogs.*,category.name as name_cate,category.alias as alias_cate,category.image as image_cate FROM blogs INNER JOIN category ON blogs.chuyenmuc = category.id WHERE type = 0 AND time_post <= $time AND ($where) ORDER BY blogs.id  DESC LIMIT $page,  18";
         } else {
-            $blog_cate_sql = "SELECT blogs.*,category.name as name_cate,category.alias as alias_cate,category.image as image_cate FROM blogs INNER JOIN category ON blogs.chuyenmuc = category.id WHERE  type = 0 AND time_post <= $time AND (chuyenmuc = $chuyen_muc OR cate_parent = $chuyen_muc) ORDER BY blogs.id DESC LIMIT $page,  18";
+            $blog_cate_sql = "SELECT blogs.*,category.name as name_cate,category.alias as alias_cate,category.image as image_cate FROM blogs INNER JOIN category ON blogs.chuyenmuc = category.id WHERE type = 0 AND time_post <= $time AND (chuyenmuc = $chuyen_muc OR cate_parent = $chuyen_muc)  ORDER BY blogs.id DESC LIMIT $page,  18";
         }
         $blog_cate = $this->Madmin->query_sql($blog_cate_sql);
         $html = '';
         if ($blog_cate != null) {
             foreach ($blog_cate as $val) {
                 $cate = chuyen_muc(['id' => $val['chuyenmuc']]);
-                if ($name_page == 'tag') {
-                    $html .= '<div class="this_train">
-                                    <a href="/' . $val['alias'] . '/">
-                                        <img src="/' . $val['image'] . '" alt="' . $val['title'] . '">
-                                        <div class="box_right_data">
-                                            <p class="title_blog">' . $val['title'] . '</p>
-                                            <p class="date_post"><span>' . date('d-m-Y', $val['created_at']) . '</span></p>
-                                            <div class="des_blog">' . $val['sapo'] . '</div>
-                                        </div>
-                                    </a>
-                                </div>';
-                } else {
                     $html .= '
                             <div class="this_train">
                                 <a title="' . $val['title'] . '" href="/' . $val['alias'] . '/">
@@ -145,7 +133,6 @@ class Ajax extends CI_Controller
                                 </a>
                             </div>
                             ';
-                }
             }
             $next = 0;
             if (count($blog_cate) == 18) {

@@ -86,7 +86,10 @@ var page = 2;
 $(".load_more").click(function () {
 	var show_more = $(this);
 	var form_data = new FormData();
+	var id_chuyenmuc = $("#chuyen_muc").val();
 	form_data.append("page", page);
+	var id_chuyenmuc = $("#chuyen_muc").val();
+	form_data.append("id_chuyenmuc", id_chuyenmuc);
 	$.ajax({
 		url: "/load_more_cate",
 		type: "POST",
@@ -100,6 +103,7 @@ $(".load_more").click(function () {
 				$(".load_more").remove();
 			} else if (data.status == 1) {
 				show_more.before(data.html);
+				$(".this_train a img").css("height", height_img);
 				if (data.next == 0) {
 					$(".load_more").remove();
 				}
