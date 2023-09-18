@@ -196,6 +196,7 @@ class Admin extends CI_Controller
             $insert_chuyenmuc = $this->Madmin->insert($data, 'category');
         }
         if ($insert_chuyenmuc > 0) {
+            $this->sitemap_cate();
             $response = [
                 'status' => 1,
                 'msg' => 'Thành công'
@@ -275,13 +276,14 @@ class Admin extends CI_Controller
     }
     public function sitemap()
     {
-        $sql = "SELECT id,alias,updated_at FROM blogs ORDER BY id ASC";
+        $time = time();
+        $sql = "SELECT id,alias,updated_at FROM blogs WHERE type = 0 AND index_blog = 1 AND time_post <= $time ORDER BY id ASC";
         $blog = $this->Madmin->query_sql($sql);
         $count = count($blog);
         $page = ceil($count / 200);
         for ($i = 1; $i <= $page; $i++) {
             $check_page = ($i - 1) * 200;
-            $sql_limit = "SELECT id,alias,updated_at FROM blogs ORDER BY id ASC LIMIT {$check_page}, 200";
+            $sql_limit = "SELECT id,alias,updated_at FROM blogs WHERE type = 0 AND index_blog = 1 AND time_post <= $time ORDER BY id ASC LIMIT {$check_page}, 200";
             $blog_limit = $this->Madmin->query_sql($sql_limit);
             $doc = new DOMDocument("1.0", "utf-8");
             $doc->formatOutput = true;
@@ -347,6 +349,72 @@ class Admin extends CI_Controller
                 }
             }
             $doc->save($name_file);
+        }
+    }
+    public function sitemap_cate()
+    {
+        $sql = "SELECT id,alias,created_at FROM category ORDER BY id ASC";
+        $cate = $this->Madmin->query_sql($sql);
+        $count = count($cate);
+        $page = ceil($count / 200);
+        for ($i = 1; $i <= $page; $i++) {
+            $check_page = ($i - 1) * 200;
+            $sql_limit = "SELECT id,alias,created_at FROM category ORDER BY id ASC LIMIT {$check_page}, 200";
+            $tag_limit = $this->Madmin->query_sql($sql_limit);
+            $doc = new DOMDocument("1.0", "utf-8");
+            $doc->formatOutput = true;
+            $r = $doc->createElement("urlset");
+            $r->setAttribute("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9");
+            $doc->appendChild($r);
+            foreach ($tag_limit as $val) {
+                $url = $doc->createElement("url");
+                $name = $doc->createElement("loc");
+                $name->appendChild($doc->createTextNode(base_url() . $val['alias'] . '/'));
+                $url->appendChild($name);
+                $changefreq = $doc->createElement("changefreq");
+                $changefreq->appendChild($doc->createTextNode('daily'));
+                $url->appendChild($changefreq);
+                $lastmod = $doc->createElement("lastmod");
+                $lastmod->appendChild($doc->createTextNode(date('Y-m-d', $val['created_at']) . 'T07:24:06+00:00'));
+                $url->appendChild($lastmod);
+                $priority = $doc->createElement("priority");
+                $priority->appendChild($doc->createTextNode('0.9'));
+                $url->appendChild($priority);
+                $r->appendChild($url);
+            }
+            $name = ($i == 1) ? '' : $i - 1;
+            $name_file = 'categories' . $name . ".xml";
+            $doc->save($name_file);
+            $date = date('Y-m-d', time());
+            $sql_check = "SELECT * FROM sitemap  WHERE name = '$name_file' ";
+            $row = $this->Madmin->query_sql_num($sql_check);
+            if ($row == 0) {
+                $data_insert = [
+                    'name' => $name_file,
+                    'time' => $date
+                ];
+                $insert = $this->Madmin->insert($data_insert, 'sitemap');
+                //\/\/\/\/\/\/\/\\
+                $sql = "SELECT * FROM sitemap";
+                $sitemap = $this->Madmin->query_sql($sql);
+                $doc = new DOMDocument("1.0", "utf-8");
+                $doc->formatOutput = true;
+                $doc->appendChild($doc->createProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="https://nguoinhanong.vn/assets/css/css_sitemap.xsl"'));
+                $r = $doc->createElement("sitemapindex");
+                $r->setAttribute("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9");
+                $doc->appendChild($r);
+                foreach ($sitemap as $key => $val) {
+                    $url = $doc->createElement("sitemap");
+                    $name = $doc->createElement("loc");
+                    $name->appendChild($doc->createTextNode(base_url() . $val['name']));
+                    $url->appendChild($name);
+                    $lastmod = $doc->createElement("lastmod");
+                    $lastmod->appendChild($doc->createTextNode($val['time'] . 'T17:28:31+07:00'));
+                    $url->appendChild($lastmod);
+                    $r->appendChild($url);
+                }
+                $doc->save("sitemap.xml");
+            }
         }
     }
 }
