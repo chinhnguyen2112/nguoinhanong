@@ -71,9 +71,13 @@ class Home extends CI_Controller
         $data['canonical'] = base_url() . $alias . '/';
         $time_now = time();
         $chuyenmuc = $this->Madmin->get_by(['alias' => $alias], 'category');
-        $blog = $this->Madmin->query_sql_row("SELECT blogs.*,category.name as name_cate,category.alias as alias_cate,category.image as img_cate FROM blogs INNER JOIN category ON category.id = blogs.chuyenmuc WHERE blogs.alias = '$alias' ");
-        $tags = $this->Madmin->get_by(['alias' => $alias], 'tags');
-        if ($chuyenmuc != null) { //chuyenmuc
+        if ($chuyenmuc == null) {
+            $page = $this->Madmin->query_sql_row("SELECT * FROM blogs WHERE type = 1 AND alias = '$alias' ");
+                if ($page == null) {
+                    $blog = $this->Madmin->query_sql_row("SELECT blogs.*,category.name as name_cate,category.alias as alias_cate,category.image as img_cate FROM blogs INNER JOIN category ON category.id = blogs.chuyenmuc WHERE type = 0 AND time_post<= $time AND blogs.alias = '$alias' ");
+                }
+        }
+        if (isset($chuyenmuc) && $chuyenmuc != null) { //chuyenmuc
             if ($_SERVER['REQUEST_URI'] != '/' . $alias . '/') {
                 redirect('/' . $alias . '/', 'location', 301);
             }
@@ -109,7 +113,7 @@ class Home extends CI_Controller
                 'chuyenmuc_blog.css',
             ];
             $data['index'] = 1;
-        } else if ($blog != null) { // blog
+        } else if (isset($blog) && $blog != null) { // blog
             if ($_SERVER['REQUEST_URI'] != '/' . $alias . '/') {
                 redirect('/' . $alias . '/', 'location', 301);
             }
@@ -140,45 +144,8 @@ class Home extends CI_Controller
             if ($blog['time_post'] <= $time_now) {
                 $data['index'] = 1;
             }
-        } else if ($tags != null) {
-            if ($_SERVER['REQUEST_URI'] != '/' . $alias . '/') {
-                redirect('/' . $alias . '/', 'location', 301);
-            }
-            $id_parent = $tags['id'];
-            $list_tag = $this->Madmin->query_sql("SELECT *  FROM tags  WHERE parent = $id_parent ");
-            $where = '  FIND_IN_SET(tag,' . $id_parent . ') ';
-            foreach ($list_tag as $key => $val) {
-                if ($key == 0) {
-                    $where .= ' OR ( FIND_IN_SET(tag,' . $val['id'] . ') ';
-                } else if ($key == count($list_tag) - 1) {
-                    $where .= ' OR FIND_IN_SET(tag,' . $val['id'] . ')  )';
-                } else {
-                    $where .= ' OR FIND_IN_SET(tag,' . $val['id'] . ') ';
-                }
-            }
-            $page = $this->uri->segment(3);
-            if ($page < 1 || $page == '') {
-                $page = 1;
-            }
-            $limit = 18;
-            $start = $limit * ($page - 1);
-            $count = $this->Madmin->query_sql("SELECT blogs.*,category.name as name_cate,category.alias as alias_cate,category.image as img_cate FROM blogs INNER JOIN category ON category.id = blogs.chuyenmuc WHERE blogs.type= 0 AND time_post <= $time_now AND ( $where )");
-            pagination('/' . $tags['alias'], count($count), $limit);
-            $data['blog'] = $this->Madmin->query_sql("SELECT * FROM blogs  WHERE type= 0 AND time_post <= $time_now AND ( $where ) ORDER BY id DESC LIMIT $start,$limit");
-            $data['title_page'] = $tags['name'];
-            $data['meta_title'] = $tags['meta_title'];
-            $data['meta_des'] = $tags['meta_des'];
-            $data['meta_key'] = $tags['meta_key'];
-            $data['content_tag'] = $tags['content'];
-            $data['canonical'] = base_url() . $alias . '/';
-            $data['content'] = 'chuyenmuc_blog';
-            $data['list_js'] = [
-                'chuyenmuc_blog.js',
-            ];
-            $data['list_css'] = [
-                'chuyenmuc_blog.css',
-            ];
-            $data['index'] = 1;
+        } else if (isset($page) && $page != null) {
+            return $this->page($page);
         } else {
             set_status_header(301);
             return $this->load->view('errors/html/error_404');
@@ -307,6 +274,23 @@ class Home extends CI_Controller
         // var_dump($html);
         $data['data_content'] = $html;
         $data['content'] = 'get_content';
+        $this->load->view('index', $data);
+    }
+
+    function page($page) {
+        if ($_SERVER['REQUEST_URI'] != '/' . $page['alias'] . '/') {
+            redirect('/' . $page['alias'] . '/', 'location', 301);
+        }
+        $data['page'] = $page;
+        $data['content'] = 'page';
+        $data['list_css'] = [
+            'page.css'
+        ];
+        $data['meta_title'] = $page['meta_title'];
+        $data['meta_des'] = $page['meta_des'];
+        $data['meta_key'] = $page['meta_key'];
+        $data['meta_img'] = $page['image'];
+        $data['index'] = 1;
         $this->load->view('index', $data);
     }
 }
