@@ -89,6 +89,9 @@ class Admin extends CI_Controller
         $data['created_at'] = $time_post;
         $data['updated_at'] = $time;
         $cate = chuyen_muc(['id' => $chuyenmuc]);
+        if ($this->input->post('type') == 1) {
+            $data['type'] = 1;
+        }
         if ($cate[0]['parent'] > 0) {
             $data['cate_parent'] = $cate[0]['parent'];
         }
@@ -96,6 +99,7 @@ class Admin extends CI_Controller
             mkdir('upload/blog/', 0755, TRUE);
         }
         if ($id > 0) {
+            $blog = $this->Madmin->get_by(['id' => $id], 'blogs');
             $where_check = [
                 'alias' => $alias,
                 'id !=' => $id
@@ -112,6 +116,9 @@ class Admin extends CI_Controller
                 'msg' => 'đã tồn tại'
             ];
         } else {
+            if ($id > 0 && $blog['author_id'] > 0) {
+                $data['author_id'] = $blog['author_id'];
+            }
             if (isset($_FILES['image']) && $_FILES['image']['name'] !== "") {
                 $filedata         = $_FILES['image']['tmp_name'];
                 $thumb_path        = 'upload/blog/' . $alias . '.jpg';
@@ -140,11 +147,15 @@ class Admin extends CI_Controller
                 $insert_blog = $this->Madmin->insert($data, 'blogs');
             }
             if ($insert_blog > 0) {
-                $this->sitemap();
-                $response = [
-                    'status' => 1,
-                    'msg' => 'Thành công'
-                ];
+                if ($data['type'] == 1) {
+                    $this->sitemap_page();
+                } else {
+                    $this->sitemap();
+                }
+                    $response = [
+                        'status' => 1,
+                        'msg' => 'Thành công'
+                    ];
             } else {
                 $response = [
                     'status' => 0,
@@ -273,6 +284,37 @@ class Admin extends CI_Controller
         }
 
         echo json_encode($error);
+    }
+    public function add_page()
+    {
+        if (admin()) {
+            $data['content'] = '/admin/add_page';
+            $data['created_at'] = time();
+            if ($this->input->get('id') > 0) {
+                $data['id'] = $id = $this->input->get('id');
+                $blog = $this->Madmin->get_by(['id' => $id], 'blogs');
+                if ($blog != null) {
+                    $data['blog'] = $blog;
+                    $data['created_at'] = $blog['created_at'];
+                } else {
+                    redirect('/admin/add_page');
+                }
+            }
+            $this->load->view('admin/index', $data);
+        } else {
+            redirect('/admin/login/');
+        }
+    }
+    public function list_page()
+    {
+        if (admin()) {
+            $list = $this->Madmin->get_list(['type' => 1], 'blogs');
+            $data['list'] = $list;
+            $data['content'] = '/admin/list_page';
+            $this->load->view('admin/index', $data);
+        } else {
+            redirect('/admin/login/');
+        }
     }
     public function sitemap()
     {
@@ -416,5 +458,47 @@ class Admin extends CI_Controller
                 $doc->save("sitemap.xml");
             }
         }
+    }
+    public function sitemap_page()
+    {
+        $page = $this->Madmin->query_sql("SELECT id,alias,created_at FROM blogs WHERE type = 1 ORDER by id");
+        $doc = new DOMDocument("1.0", "utf-8");
+        $doc->formatOutput = true;
+        $r = $doc->createElement("urlset");
+        $r->setAttribute("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9");
+        $doc->appendChild($r);
+        //sitemap trang chủ
+        $url = $doc->createElement("url");
+        $name = $doc->createElement("loc");
+        $name->appendChild($doc->createTextNode(base_url()));
+        $url->appendChild($name);
+        $lastmod = $doc->createElement("lastmod");
+        $lastmod->appendChild($doc->createTextNode('2023-03-02'));
+        $url->appendChild($lastmod);
+        $changefreq = $doc->createElement("changefreq");
+        $changefreq->appendChild($doc->createTextNode('daily'));
+        $url->appendChild($changefreq);
+        $priority = $doc->createElement("priority");
+        $priority->appendChild($doc->createTextNode('1'));
+        $url->appendChild($priority);
+        $r->appendChild($url);
+        foreach ($page as $val) {
+            $url = $doc->createElement("url");
+            $name = $doc->createElement("loc");
+            $name->appendChild($doc->createTextNode(base_url() . $val['alias'] . '/'));
+            $url->appendChild($name);
+            $lastmod = $doc->createElement("lastmod");
+            $lastmod->appendChild($doc->createTextNode(date('Y-m-d', $val['created_at'])));
+            $url->appendChild($lastmod);
+            $changefreq = $doc->createElement("changefreq");
+            $changefreq->appendChild($doc->createTextNode('daily'));
+            $url->appendChild($changefreq);
+            $priority = $doc->createElement("priority");
+            $priority->appendChild($doc->createTextNode('0.9'));
+            $url->appendChild($priority);
+            $r->appendChild($url);
+        }
+        $name_file = "page.xml";
+        $doc->save($name_file);
     }
 }

@@ -8,7 +8,7 @@
     <meta name="robots" content="noindex,nofollow" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Nguoinhanong Admin</title>
+    <title>Phunuplus Admin</title>
     <link rel="stylesheet" href="/assets/css/admin/vendors/typicons/typicons.css">
     <link rel="stylesheet" href="/assets/css/admin/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="/assets/css/admin/vertical-layout-light/style.css">
@@ -60,6 +60,23 @@
                             <span class="menu-title">Trang chủ</span>
                         </a>
                     </li>
+                    <?php if (check_admin() == 1) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#ui-user" aria-expanded="false" aria-controls="ui-user">
+                                <i class="typcn typcn-user menu-icon"></i>
+                                <span class="menu-title">Thành viên</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="ui-user">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item"><a class="nav-link" href="/admin/info?id=<?= $_SESSION['admin']['id'] ?>">Hồ sơ</a></li>
+
+                                    <li class="nav-item"><a class="nav-link" href="/admin/info">Thêm thành viên</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/admin/list_author">Danh sách thành viên</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    <?php } ?>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basicss" aria-expanded="false" aria-controls="ui-basicss">
                             <i class="typcn typcn-document-text menu-icon"></i>
@@ -69,11 +86,49 @@
                         <div class="collapse" id="ui-basicss">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"><a class="nav-link" href="/admin/add_blog">Bài viết mới</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/admin/add_chuyenmuc">Thêm chuyên mục</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/admin/list_blog">Danh sách bài viết</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/list_page">
+                            <i class="typcn typcn-document-text menu-icon"></i>
+                            <span class="menu-title">Page</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-chuyenmuc" aria-expanded="false" aria-controls="ui-chuyenmuc">
+                            <i class="typcn typcn-document-text menu-icon"></i>
+                            <span class="menu-title">Chuyên mục</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-chuyenmuc">
+                            <ul class="nav flex-column sub-menu">
+                                <?php if (check_admin() != 3) { ?>
+                                    <li class="nav-item"><a class="nav-link" href="/admin/add_chuyenmuc">Thêm chuyên mục</a></li>
+                                <?php } ?>
                                 <li class="nav-item"><a class="nav-link" href="/admin/list_chuyenmuc">Danh sách chuyên mục</a></li>
                             </ul>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basicsss" aria-expanded="false" aria-controls="ui-basicsss">
+                            <i class="typcn typcn-document-text menu-icon"></i>
+                            <span class="menu-title">Tags</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-basicsss">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="/admin/add_tag">Thêm tags</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/admin/list_tag">Danh sách tags</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/logout">
+                            <i class="typcn typcn-mortar-board menu-icon"></i>
+                            <span class="menu-title">Đăng xuất</span>
+                        </a>
                     </li>
                 </ul>
             </nav>
