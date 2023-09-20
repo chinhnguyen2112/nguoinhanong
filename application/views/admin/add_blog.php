@@ -224,13 +224,6 @@
         <textarea name="content" id="editor"><?= (isset($blog) && $blog['content'] != '') ? $blog['content'] : '' ?></textarea>
     </div>
     <div class="form-group mb-3">
-        <label class="label" for="name">Phân loại</label>
-        <select name="type" id="type" class="form-control">
-            <option <?= (isset($blog) && $blog['type'] == 0) ? 'selected' : '' ?> value="0">Post</option>
-            <option <?= (isset($blog) && $blog['type'] == 1) ? 'selected' : '' ?> value="1">Page</option>
-        </select>
-    </div>
-    <div class="form-group mb-3">
         <label class="label" for="name">Hẹn giờ đăng </label>
         <input type="datetime-local" name="time_post" id="" value="<?= date("Y-m-d\TH:i:s", $time_post) ?>" class="form-control">
     </div>

@@ -21,6 +21,11 @@ class Admin extends CI_Controller
             redirect('/admin/login/');
         }
     }
+    public function logout()
+    {
+        unset($_SESSION['admin']);
+        header('Location: /');
+    }
     public function view_login()
     {
         if (!admin()) {
@@ -85,7 +90,6 @@ class Admin extends CI_Controller
         $data['meta_title'] = $this->input->post('meta_title');
         $data['meta_key']     = $this->input->post('meta_key');
         $data['meta_des']     = $this->input->post('meta_des');
-        $data['type'] = $this->input->post('type');
         $data['created_at'] = $time_post;
         $data['updated_at'] = $time;
         $cate = chuyen_muc(['id' => $chuyenmuc]);
@@ -245,7 +249,7 @@ class Admin extends CI_Controller
             $cate = $this->input->get('cate');
             $child_cate = $this->input->get('child_cate');
             $x = 0;
-            $where = ' id > 0  ';
+            $where = ' id > 0  AND type = 0';
             if ($cate > 0) {
                 $where .= " AND ( chuyenmuc=  $cate  OR cate_parent = $cate ) ";
             }
@@ -319,13 +323,13 @@ class Admin extends CI_Controller
     public function sitemap()
     {
         $time = time();
-        $sql = "SELECT id,alias,updated_at FROM blogs WHERE type = 0 AND index_blog = 1 AND time_post <= $time ORDER BY id ASC";
+        $sql = "SELECT id,alias,updated_at FROM blogs WHERE type = 0 AND time_post <= $time ORDER BY id ASC";
         $blog = $this->Madmin->query_sql($sql);
         $count = count($blog);
         $page = ceil($count / 200);
         for ($i = 1; $i <= $page; $i++) {
             $check_page = ($i - 1) * 200;
-            $sql_limit = "SELECT id,alias,updated_at FROM blogs WHERE type = 0 AND index_blog = 1 AND time_post <= $time ORDER BY id ASC LIMIT {$check_page}, 200";
+            $sql_limit = "SELECT id,alias,updated_at FROM blogs WHERE type = 0 = 1 AND time_post <= $time ORDER BY id ASC LIMIT {$check_page}, 200";
             $blog_limit = $this->Madmin->query_sql($sql_limit);
             $doc = new DOMDocument("1.0", "utf-8");
             $doc->formatOutput = true;

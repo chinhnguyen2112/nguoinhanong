@@ -53,6 +53,7 @@ $route['default_controller'] = 'Home/home';
 
 //admin
 $route['admin'] = 'Admin/admin';
+$route['admin/logout'] = 'Admin/logout';
 $route['admin/login'] = 'Admin/view_login';
 $route['admin/login_admin'] = 'Admin/login_admin';
 $route['admin/login_admin'] = 'Admin/login_admin';
