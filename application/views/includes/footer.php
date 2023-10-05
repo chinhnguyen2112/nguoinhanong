@@ -1,8 +1,4 @@
-<?php $menu_cate_parent = chuyen_muc(['parent' => 0]);
-$count_line = 0;
-if (count($menu_cate_parent) > 2) {
-    $count_line =  count($menu_cate_parent) - 2;
-} ?>
+</div>
 <footer id="colophon" class="site-footer" role="contentinfo">
     <div class="footer-widgets body_width">
         <div class="content_footer">
@@ -132,3 +128,26 @@ if (count($menu_cate_parent) > 2) {
         </div>
     </div>
 </footer>
+<!-- <div class="side_coming">
+    <div class="list_side_coming">
+        <div class="left_coming">
+            <p>COMING SOON</p>
+        </div>
+        <div class="right_coming">
+            <p>COMING SOON</p>
+        </div>
+    </div>
+</div>
+<div class="bottom_coming">
+    <div class="list_bot_coming">
+        <div class="this_bot ">
+            <p>COMING SOON</p>
+        </div>
+        <div class="this_bot">
+            <p>COMING SOON</p>
+        </div>
+        <div class="close">
+            <img src="/images/icons8-close-30.png" alt="Đóng">
+        </div>
+    </div>
+</div> -->
