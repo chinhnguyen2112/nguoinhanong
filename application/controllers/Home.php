@@ -73,9 +73,9 @@ class Home extends CI_Controller
         $chuyenmuc = $this->Madmin->get_by(['alias' => $alias], 'category');
         if ($chuyenmuc == null) {
             $page = $this->Madmin->query_sql_row("SELECT * FROM blogs WHERE type = 1 AND alias = '$alias' ");
-                if ($page == null) {
-                    $blog = $this->Madmin->query_sql_row("SELECT blogs.*,category.name as name_cate,category.alias as alias_cate,category.image as img_cate FROM blogs INNER JOIN category ON category.id = blogs.chuyenmuc WHERE type = 0 AND time_post<= $time AND blogs.alias = '$alias' ");
-                }
+            if ($page == null) {
+                $blog = $this->Madmin->query_sql_row("SELECT blogs.*,category.name as name_cate,category.alias as alias_cate,category.image as img_cate FROM blogs INNER JOIN category ON category.id = blogs.chuyenmuc WHERE type = 0 AND time_post<= $time AND blogs.alias = '$alias' ");
+            }
         }
         if (isset($chuyenmuc) && $chuyenmuc != null) { //chuyenmuc
             if ($_SERVER['REQUEST_URI'] != '/' . $alias . '/') {
@@ -277,7 +277,8 @@ class Home extends CI_Controller
         $this->load->view('index', $data);
     }
 
-    function page($page) {
+    function page($page)
+    {
         if ($_SERVER['REQUEST_URI'] != '/' . $page['alias'] . '/') {
             redirect('/' . $page['alias'] . '/', 'location', 301);
         }
@@ -293,4 +294,14 @@ class Home extends CI_Controller
         $data['index'] = 1;
         $this->load->view('index', $data);
     }
+    // public function replace_blog()
+    // {
+    //     $blog =  $this->Madmin->get_list('', 'blogs');
+    //     $search = [' white-space-collapse: preserve;', ' background-color: transparent;', 'font-size: 11pt;', 'font-family: Arial, sans-serif;', 'color: rgb(0, 0, 0);', 'font-variant-position: normal;', 'text-align: justify;', 'font-variant-position: normal;', 'font-variant-alternates: normal;', 'font-variant-east-asian: normal;', 'font-variant-numeric: normal;', 'vertical-align: baseline;', ' font-family: Arial;', 'white-space: pre-wrap;', 'line-height:1.7999999999999998;', 'margin-top:10pt;', 'margin-bottom:10pt;', 'text-align:center;', 'line-height: 1.8;', 'margin-top: 10pt;', 'margin-bottom: 10pt;', 'text-align:center', 'list-style-type: disc;', 'white-space: pre;', 'style=""'];
+    //     $replace   = '';
+    //     foreach ($blog as $val) {
+    //         $result = str_replace($search, '', $val);
+    //         $update = $this->Madmin->update(['id' => $val['id']], $result, 'blogs');
+    //     }
+    // }
 }
