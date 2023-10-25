@@ -73,11 +73,11 @@
     fbq('init', '327353239770086');
     fbq('track', 'PageView');
   </script>
+  <noscript><img style="display:none" src="https://www.facebook.com/tr?id=327353239770086&ev=PageView&noscript=1"></noscript>
   <!-- End Meta Pixel Code -->
 </head>
 
 <body>
-  <noscript><img style="display:none" src="https://www.facebook.com/tr?id=327353239770086&ev=PageView&noscript=1"></noscript>
   <?php
   $this->load->view("includes/header");
 
