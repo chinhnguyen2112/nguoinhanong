@@ -1,5 +1,5 @@
 </div>
-<footer id="colophon" class="site-footer" role="contentinfo">
+<footer id="colophon" class="site-footer">
     <div class="footer-widgets body_width">
         <div class="content_footer">
             <div class="ft_left">
@@ -128,26 +128,3 @@
         </div>
     </div>
 </footer>
-<!-- <div class="side_coming">
-    <div class="list_side_coming">
-        <div class="left_coming">
-            <p>COMING SOON</p>
-        </div>
-        <div class="right_coming">
-            <p>COMING SOON</p>
-        </div>
-    </div>
-</div>
-<div class="bottom_coming">
-    <div class="list_bot_coming">
-        <div class="this_bot ">
-            <p>COMING SOON</p>
-        </div>
-        <div class="this_bot">
-            <p>COMING SOON</p>
-        </div>
-        <div class="close">
-            <img src="/images/icons8-close-30.png" alt="Đóng">
-        </div>
-    </div>
-</div> -->

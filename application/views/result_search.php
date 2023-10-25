@@ -1,11 +1,6 @@
 <div class="container">
     <div class="result_content body_width">
         <div class="left_content">
-            <!-- <div class="breadcrumb">
-                <a href="/">Trang Chủ</a>
-                <span> / </span>
-                <a class="link_breadcrumb" href="#"><?= $breadcrumb ?></a>
-            </div> -->
             <div class="heading_left">
                 <p>Kết quả tìm kiếm với từ khóa : <?= $key_search ?></p>
             </div>
@@ -14,7 +9,7 @@
                     <div class="item_result">
                         <div class="left_item_content">
                             <a class="img_item" href="/<?= $val['alias'] ?>/">
-                                <img src="/<?= $val['image'] ?>" />
+                                <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
                             </a>
                             <a class="name_cate" href="/<?= $val['cate_alias'] ?>/">
                                 <?= $val['cate_name'] ?>
@@ -39,7 +34,7 @@
                     <div class="item_left_content">
                         <div class="left_item">
                             <a class="img_item_left" href="/<?= $val['alias'] ?>/">
-                                <img src="/<?= $val['image'] ?>" />
+                                <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
                             </a>
                         </div>
                         <div class="right_item">

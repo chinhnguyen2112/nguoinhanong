@@ -53,9 +53,11 @@
     border: 1px solid #86d05f;
     color: #86d05f;
 }
+
 .item_cont img {
     border-radius: 50%;
 }
+
 .text_item_mail {
     margin-top: 5px;
     font-size: 11px !important;
@@ -176,6 +178,7 @@
     cursor: pointer;
     width: 100%;
     z-index: 1;
+    text-align: center;
 }
 
 .btn_more::before {

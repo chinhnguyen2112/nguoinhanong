@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="mail_bot">
-                    <input class="input_mail" name="input_mail" id="input_mail" type="email" placeholder="Nhập Email của bạn" />
+                    <input class="input_mail" name="input_mail" id="input_mail" type="email" placeholder="Nhập Email của bạn">
                     <button class="submit_mail">Đăng Ký Ngay</button>
                 </div>
             </div>
@@ -35,7 +35,7 @@
     <div class="hot_news">
         <div class="box_heading">
             <a href="#">
-                <img src="/images/icons8-fire-30.png" alt="icon fire" />
+                <img src="/images/icons8-fire-30.png" alt="icon fire">
                 Tin Mới Nóng
             </a>
         </div>
@@ -48,9 +48,9 @@
                 <?php } ?>
             </ul>
             <div class="see_more_news">
-                <button class="btn_more">
+                <div class="btn_more">
                     <a href="/">Xem Thêm</a>
-                </button>
+                </div>
             </div>
         </div>
     </div>

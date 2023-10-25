@@ -43,7 +43,7 @@
                             <div class="left_content">
                                 <div class="cont_thumb">
                                     <a href="/<?= $val['alias'] ?>/">
-                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
+                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
                                     </a>
                                     <span class="link_cate">
                                         <a href="/<?= $name_cate_1['alias'] ?>/"><?= $name_cate_1['name'] ?></a>
@@ -70,7 +70,7 @@
                             if ($key > 0) { ?>
                                 <a class="small_item" href="/<?= $val['alias'] ?>/">
                                     <div class="small_img">
-                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
+                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
                                     </div>
                                     <div class="small_content">
                                         <div class="small_title">
@@ -96,7 +96,7 @@
                             <div class="left_content">
                                 <div class="cont_thumb">
                                     <a href="/<?= $val['alias'] ?>/">
-                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
+                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
                                     </a>
                                     <span class="link_cate">
                                         <a href="/<?= $name_cate_2['alias'] ?>"><?= $name_cate_2['name'] ?></a>
@@ -123,7 +123,7 @@
                             if ($key > 0) { ?>
                                 <a class="small_item" href="/<?= $val['alias'] ?>/">
                                     <div class="small_img">
-                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
+                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
                                     </div>
                                     <div class="small_content">
                                         <div class="small_title">
@@ -149,7 +149,7 @@
                             <div class="left_content">
                                 <div class="cont_thumb">
                                     <a href="/<?= $val['alias'] ?>/">
-                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
+                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
                                     </a>
                                     <span class="link_cate">
                                         <a href="/<?= $name_cate_3['alias'] ?>"><?= $name_cate_3['name'] ?></a>
@@ -176,7 +176,7 @@
                             if ($key > 0) { ?>
                                 <a class="small_item" href="/<?= $val['alias'] ?>/">
                                     <div class="small_img">
-                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>" />
+                                        <img src="/<?= $val['image'] ?>" alt="<?= $val['title'] ?>">
                                     </div>
                                     <div class="small_content">
                                         <div class="small_title">
