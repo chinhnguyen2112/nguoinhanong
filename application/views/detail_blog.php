@@ -9,16 +9,25 @@
                     <span>
                         <img src="/images/icons/icons8-arrow-right-10.png" alt="icon arrow right">
                     </span>
-                    <?php if (isset($cate_1) && $cate_1 != null) { ?>
-                        <a class="link_breadcrumb" href="/<?= $cate_1['alias'] ?>/"><?= $cate_1['name'] ?></a>
+                    <?php if (isset($cate_parent_2) && $cate_parent_2 != null) { ?>
+                        <a class="link_breadcrumb" href="/<?= $cate_parent_2['alias'] ?>/"><?= $cate_parent_2['name'] ?></a>
                         <span>
-                            <img src="/images/icons/icons8-arrow-right-10.png" src="icon arrow right">
+                            <img src="/images/icons/icons8-arrow-right-10.png" alt="icon arrow right">
+                        </span>
+                    <?php }
+                    if (isset($cate_parent) && $cate_parent != null) { ?>
+                        <a class="link_breadcrumb" href="/<?= $cate_parent['alias'] ?>/"><?= $cate_parent['name'] ?></a>
+                        <span>
+                            <img src="/images/icons/icons8-arrow-right-10.png" alt="icon arrow right">
                         </span>
                     <?php }
                     if (isset($cate) && $cate != null) { ?>
                         <a class="link_breadcrumb" href="/<?= $cate['alias'] ?>/"><?= $cate['name'] ?></a>
-
+                        <span>
+                            <img src="/images/icons/icons8-arrow-right-10.png" alt="icon arrow right">
+                        </span>
                     <?php } ?>
+                    <span class="this_breadcrumb"><?= $blog['title'] ?></span>
                 </div>
                 <div class="box_data_blog">
                     <div class="left_blog">

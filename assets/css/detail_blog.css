@@ -9,17 +9,17 @@ a {
 .main_content_blog {
     display: flex;
     justify-content: space-between;
-    padding-top: 30px;
+    padding-top: 10px;
 }
 
 .breadcrumb {
+    padding: 0;
     gap: 10px;
-    display: none !important;
 }
 
 .this_breadcrumb {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 13px;
+    line-height: 16px;
     color: #999;
     font-weight: 700;
 }
@@ -29,7 +29,7 @@ a {
     margin-bottom: 0;
     font-weight: 400;
     font-size: 13px;
-    line-height: 24px;
+    line-height: 16px;
     text-align: center;
     color: #808EA1;
 }

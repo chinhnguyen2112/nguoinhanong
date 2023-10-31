@@ -5,7 +5,7 @@
             <div class="ft_left">
                 <img class="logo_ft" src="/images/logo.png" alt="logo footer">
                 <div class="widget">
-                    <p class="title_widget">Người Nhà Nông - Kênh chia sẻ kiến thức về nông nghiệp</p>
+                    <p class="title_widget">Cổng thông tin điện tử Nông Nghiệp Việt Nam được phát triển bởi Manta Việt Nam.</p>
                     <div class="contact_infor">
                         <ul class="list_contact">
                             <li style="width:100%">
