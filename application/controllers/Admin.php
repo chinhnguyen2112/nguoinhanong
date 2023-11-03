@@ -81,17 +81,16 @@ class Admin extends CI_Controller
     {
         $id = $this->input->post('id');
         $time = time();
-        $search = [' white-space-collapse: preserve;', ' background-color: transparent;', 'font-size: 11pt;', 'font-family: Arial, sans-serif;', 'color: rgb(0, 0, 0);', 'font-variant-position: normal;', 'text-align: justify;', 'font-variant-position: normal;', 'font-variant-alternates: normal;', 'font-variant-east-asian: normal;', 'font-variant-numeric: normal;', 'vertical-align: baseline;', ' font-family: Arial;', 'white-space: pre-wrap;', 'line-height:1.7999999999999998;', 'margin-top:10pt;', 'margin-bottom:10pt;', 'text-align:center;', 'line-height: 1.8;', 'margin-top: 10pt;', 'margin-bottom: 10pt;', 'text-align:center', 'list-style-type: disc;', 'white-space: pre;', 'style=""'];
         $data['title'] = $this->input->post('title');
         $data['time_post'] = $time_post =  strtotime($this->input->post('time_post'));
         $data['alias'] = $alias = $this->input->post('alias');
         $data['chuyenmuc'] = $chuyenmuc =  $this->input->post('category');
         $sapo =  $this->input->post('sapo');
-        $sapo = str_replace($search, '', $sapo);
         $content =  $this->input->post('content');
-        $content = str_replace($search, '', $content);
-        $data['content'] = $content;
-        $data['sapo'] = $sapo;
+        $content = preg_replace('/(<[^>]+) id=".*?"/i', '$1', $content);
+        $sapo =  preg_replace('/(<[^>]+) id=".*?"/i', '$1', $sapo);
+        $data['content'] = preg_replace('/(<[^>]+) style=".*?"/i', '$1', $content);
+        $data['sapo'] =  preg_replace('/(<[^>]+) style=".*?"/i', '$1', $sapo);
         $data['meta_title'] = $this->input->post('meta_title');
         $data['meta_key']     = $this->input->post('meta_key');
         $data['meta_des']     = $this->input->post('meta_des');
