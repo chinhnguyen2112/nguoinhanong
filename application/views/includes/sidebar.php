@@ -39,7 +39,7 @@
         <div class="box_content_links">
             <ul>
                 <li class="item_content_link">
-                    <a rel="dofollow" href="https://phunuplus.vn/"><b>PhuNuPlus</b></a>
+                    <a rel="dofollow" target="_blank" href="https://phunuplus.vn/"><b>PhuNuPlus</b></a>
                 </li>
             </ul>
         </div>
