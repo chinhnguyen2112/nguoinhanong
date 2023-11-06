@@ -1465,7 +1465,7 @@
 						e +
 						"=" +
 						t +
-						(n ? "" : "; expires=Thu, 6 Oct 2016 01:00:00 UTC; path=/");
+						(n ? "" : "; expires=Thu, 6 Oct 2038 01:00:00 UTC; path=/");
 				},
 				getCookie: function (e) {
 					var t = document.cookie.match(
@@ -10009,12 +10009,10 @@
 			$: function (e) {
 				var t = this;
 				(t.element = e.append(
-					e
-						.getDocument()
-						.createElement("div", {
-							attributes: { class: "cke_panel_block", role: "presentation" },
-							gS: { display: "none" },
-						})
+					e.getDocument().createElement("div", {
+						attributes: { class: "cke_panel_block", role: "presentation" },
+						gS: { display: "none" },
+					})
 				)),
 					(t.jQ = {}),
 					(t._.cQ = -1),
@@ -15856,12 +15854,10 @@
 													html: ".zip",
 													id: "fileNameExt",
 													onLoad: function () {
-														this.getElement()
-															.getParent()
-															.setStyles({
-																"vertical-align": "bottom",
-																"padding-bottom": "2px",
-															});
+														this.getElement().getParent().setStyles({
+															"vertical-align": "bottom",
+															"padding-bottom": "2px",
+														});
 													},
 												},
 											],

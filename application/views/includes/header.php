@@ -5,9 +5,9 @@
             <img src="/images/logo.png" alt="logo" class="img_logo_bot_header"></a>
         <div class="header_menu">
             <div class="list_menu">
-                <div class="this_menu">
+                <!-- <div class="this_menu">
                     <span><a href="/">Trang chủ</a></span>
-                </div>
+                </div> -->
                 <?php $menu_cate_parent = chuyen_muc(['parent' => 0]);
                 foreach ($menu_cate_parent as $val) {
                     $menu_cate = chuyen_muc(['parent' => $val['id']]); ?>

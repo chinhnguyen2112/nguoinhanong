@@ -32,6 +32,18 @@
             </div>
         </div>
     </div>
+    <div class="sidebar_box_gray">
+        <div class="box_linkout">
+            <p>Liên Kết Hữu Ích</p>
+        </div>
+        <div class="box_content_links">
+            <ul>
+                <li class="item_content_link">
+                    <a rel="dofollow" href="https://phunuplus.vn/"><b>PhuNuPlus</b></a>
+                </li>
+            </ul>
+        </div>
+    </div>
     <div class="hot_news">
         <div class="box_heading">
             <a href="#">
