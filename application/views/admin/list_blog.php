@@ -210,6 +210,7 @@
                     <div class="card-body">
                         <div class="box_search_forrm">
                             <p>Bộ lọc</p>
+                            <input id="url_search" class="key_search" placeholder="Nhập url..." value="<?= $this->input->get('url_search') ?>" />
                             <input id="key_search" class="key_search" placeholder="Nhập từ khóa..." value="<?= $this->input->get('key_search') ?>" />
                             <select name="" id="cate">
                                 <option value="">Chọn chuyên mục</option>
@@ -237,8 +238,7 @@
                                         <th>Tiêu đề</th>
                                         <th>Xem tin</th>
                                         <th>Chuyên mục</th>
-                                        <th style="width:300px">URL</th>
-                                        <th style="width:50px">Type</th>
+                                        <th style="width:300px">Tags</th>
                                         <th>Ngày đăng</th>
                                     </tr>
                                 </thead>
@@ -262,18 +262,17 @@
                                                 // }
                                                 ?>
                                             </td>
-                                            <td style="width:300px"><?= 'https://nguoinhanong.vn/' . $val['alias'] . '/' ?></td>
-                                            <td style="width:50px">
-                                                <!-- <span><?= $val['type']  ?></span> -->
-                                                <span>
+                                            <td style="width:300px">
+                                                <div class="list_tag">
                                                     <?php
-                                                    if ($val['type'] == '0') {
-                                                        echo 'Blog';
-                                                    } else {
-                                                        echo 'Page';
+                                                    if ($val['tag'] != '') {
+                                                        $tag = explode(',', $val['tag']);
+                                                        foreach ($tag as $key_tag => $val_tag) {
+                                                            $this_tag = tag(['id' => $val_tag]);
+                                                            echo '<a style=" background: #ff4504; padding: 2px 5px; color: #fff;" href="/' . $this_tag[0]['alias'] . '/">' . $this_tag[0]['name'] . '</a>';
+                                                        }
                                                     }
-                                                    ?>
-                                                </span>
+                                                    ?></div>
                                             </td>
                                             <td><?= date('d-m-Y', $val['created_at']) ?></td>
                                             <td class="text-center">
@@ -304,13 +303,11 @@
 
 <script>
     function filter_ds() {
+        var url_search = $('#url_search').val();
         var key_search = $('#key_search').val();
         var cate = $('#cate').val();
-        var child_cate = $('#child_cate').val();
-        var url = '/admin/list_blog?key_search=' + key_search + '&cate=' + cate + '&child_cate=' + child_cate;
-
+        var url = '/admin/list_blog?key_search=' + key_search + '&cate=' + cate + '&url_search=' + url_search;
         window.location.href = url;
-
     }
     $('#cate').change(function() {
         var id_cate = $(this).val();

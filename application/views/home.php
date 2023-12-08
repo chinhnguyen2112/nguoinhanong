@@ -1,3 +1,7 @@
+<h1 style="display: none;">Người Nhà Nông</h1>
+<h2 style="display: none;">Nông Nghiệp</h2>
+<h2 style="display: none;"> Chăn Nuôi</h2>
+<h3 style="display: none;">Nông Sản</h3>
 <div class="homeContent body_width">
     <div class="container_widget ">
         <div class="right_home">

@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="/assets/css/select2.min.css">
 <style>
     .form_change_pass {
         width: 800px;
@@ -51,7 +50,7 @@
         margin-bottom: 30px !important;
     }
 
-    .nav_blog_skill {
+    .nav_list_skill {
         position: absolute;
         display: none;
         max-height: 200px;
@@ -145,118 +144,70 @@
         margin-bottom: 10px;
     }
 
-    .select2-selection__choice {
-        padding: 8px 5px !important;
-        font-size: 12px !important;
-    }
-
-    .select_box {
-        float: right;
-        margin-bottom: 15px;
-    }
-
-    .select_box select {
-        padding: 5px;
-        margin-left: 5px;
-    }
-
-    .select_box option {
-        padding: 3px;
-    }
-
     @media only screen and (max-width: 1024px) {
         .form_change_pass {
             width: 100%;
         }
     }
 </style>
+
 <link rel="stylesheet" href="/assets/css/sweetalert.css">
+
 <form id="form" class="form_change_pass">
-    <input type="hidden" id="id_blog" name="id" hidden value="<?= (isset($id) && $id > 0) ? $id : '' ?>" />
-    <div class="form-group mb-3" style="text-align: center;">
-        <label for="image">
-            <img src="/<?= (isset($blog) && $blog['image'] != '') ? $blog['image'] : 'images/avt.png' ?>" style="cursor:pointer" id="mainImage" width="300px" height="200px" alt=" ảnh sản phẩm">
-        </label>
-        <p>Ảnh đại diện</p>
-        <input type="file" style="width: 0;" accept="image/png, image/jpeg" onchange="document.getElementById('mainImage').src = window.URL.createObjectURL(this.files[0])" id="image" name="image">
+    <input type="hidden" id="id_uv" name="id" hidden value="<?= (isset($id) && $id > 0) ? $id : '' ?>" />
+    <div class="form-group mb-3">
+        <label class="label" for="name">Tên tag</label>
+        <input type="text" name="name" id="name" value="<?= (isset($tag)) ? $tag['name'] : ''; ?>" class="form-control">
     </div>
     <div class="form-group mb-3">
-        <label class="label" for="name">H1 (50 > 70 kí tự)</label>
-        <input type="text" name="title" value="<?= (isset($blog)) ? $blog['title'] : ''; ?>" class="form-control" />
+        <label class="label" for="name">Đường dẫn thân thiện (không chứa dấu "/")</label>
+        <input type="text" name="alias" value="<?= (isset($tag)) ? $tag['alias'] : ''; ?>" oninput="show_alias(this.value)" id="alias" class="form-control">
     </div>
     <div class="form-group mb-3">
-        <label class="label" for="name">Keyword</label>
-        <input type="text" name="meta_key" id="meta_key" value="<?= (isset($blog)) ? $blog['meta_key'] : ''; ?>" oninput="show_alias(this.value)" class="form-control">
-    </div>
-    <div class="form-group mb-3">
-        <label class="label" for="name">Đường dẫn thân thiện</label>
-        <input type="text" name="alias" value="<?= (isset($blog)) ? $blog['alias'] : ''; ?>" id="alias" class="form-control">
-    </div>
-    <div class="form-group mb-3">
-        <label class="label" for="name">Chuyên mục</label>
+        <label class="label" for="name">Tag cha</label>
         <select name="category" id="category" class="form-control">
+            <option value="0">Chọn tag</option>
             <?php
-            $chuyenmuc = chuyen_muc(['level !=' => 1]);
-            foreach ($chuyenmuc as $key => $val) {
-                $name = $val['name'];
-                if ($val['parent'] > 0) {
-                    $cate_parent = chuyen_muc(['id' => $val['parent']]);
-                    $name = $cate_parent[0]['name'] . ' - ' . $val['name'];
-                } ?>
-                <option <?= (isset($blog) &&  $blog['chuyenmuc'] == $val['id']) ? 'selected' : '' ?> value="<?= $val['id'] ?>"><?= $name ?></option>
+            $list_tag = tag(['parent' => 0, 'id !=' => $tag['id']]);
+            foreach ($list_tag as $key => $val) { ?>
+                <option <?= (isset($tag) &&  $tag['parent'] == $val['id']) ? 'selected' : '' ?> value="<?= $val['id'] ?>"><?= $val['name'] ?></option>
             <?php } ?>
         </select>
     </div>
     <div class="form-group mb-3">
-        <label class="label" for="name">Tag</label>
-        <select name="tag[]" id="tag" class="form-control select2" multiple>
-            <?php
-            $tag = tag();
-            $tag_blog = explode(',', $blog['tag']);
-            foreach ($tag as $key => $val) {
-                $name = $val['name'];
-            ?>
-                <option <?= (isset($blog) &&  in_array($val['id'], $tag_blog)) ? 'selected' : '' ?> value="<?= $val['id'] ?>"><?= $name ?></option>
-            <?php } ?>
-        </select>
+        <label class="label" for="name">Meta Keyword</label>
+        <input type="text" name="meta_key" id="meta_key" value="<?= (isset($tag)) ? $tag['meta_key'] : ''; ?>" class="form-control">
     </div>
     <div class="form-group mb-3">
-        <label class="label" for="name">Meta Title (50 > 60 kí tụ)</label>
-        <input type="text" name="meta_title" value="<?= (isset($blog)) ? $blog['meta_title'] : ''; ?>" class="form-control">
+        <label class="label" for="name">Meta Title</label>
+        <input type="text" name="meta_title" id="meta_title" value="<?= (isset($tag)) ? $tag['meta_title'] : ''; ?>" class="form-control">
     </div>
     <div class="form-group mb-3">
         <label class="label" for="name">Meta Description</label>
-        <textarea style=" height:150px" name="meta_des" id="meta_des" class="form-control"><?= (isset($blog) && $blog['meta_des'] != '') ? $blog['meta_des'] : '' ?></textarea>
-    </div>
-    <div class="form-group mb-3">
-        <label class="label" for="name">Sapo</label>
-        <textarea name="sapo" id="sapo"><?= (isset($blog) && $blog['sapo'] != '') ? $blog['sapo'] : '' ?></textarea>
+        <textarea type="text" style="height:110px" name="meta_des" id="meta_des" class="form-control"><?= (isset($tag)) ? $tag['meta_des'] : ''; ?></textarea>
     </div>
     <div class="form-group mb-3">
         <label class="label" for="name">Nội dung</label>
-        <textarea name="content" id="editor"><?= (isset($blog) && $blog['content'] != '') ? $blog['content'] : '' ?></textarea>
-    </div>
-    <div class="form-group mb-3">
-        <label class="label" for="name">Hẹn giờ đăng </label>
-        <input type="datetime-local" name="time_post" id="" value="<?= date("Y-m-d\TH:i:s", $time_post) ?>" class="form-control">
+        <textarea name="content" id="editor"><?= (isset($tag) && $tag['content'] != '') ? $tag['content'] : '' ?></textarea>
     </div>
     <div class="form-group">
         <button type="submit" class="form-control btn btn-primary submit px-3"><?= (isset($id)) ? "Sửa" : "Thêm mới" ?></button>
     </div>
+
 </form>
+
 <script src="/assets/js/jquery.validate.min.js"></script>
-<script src="/assets/js/select2.min.js"></script>
 <script src="/assets/js/sweetalert.min.js"></script>
 <script src="/ckeditor/ckeditor.js"></script>
 <script defer type="text/javascript">
     CKEDITOR.replace('editor');
-    CKEDITOR.replace('sapo');
-    editor.execute('removeFormat');
 </script>
-<script>
-    $('.select2').select2({
-        placeholder: 'Chọn tag',
-        'height': '100%'
+<script type="text/javascript">
+    $("#alias").keypress(function(evt) {
+        var num = String.fromCharCode(evt.which);
+        if (num == " ") {
+            evt.preventDefault();
+        }
     });
 
     function get_alias(str) {
@@ -284,55 +235,29 @@
         var alias = get_alias(str);
         $("#alias").val(alias);
     }
-    var check_avt = ($('#id_blog').val() > 0) ? false : true;
     $("#form").validate({
         onclick: false,
         rules: {
-            "image": {
-                required: check_avt,
-            },
-            "title": {
+            "name": {
                 required: true,
             },
-            "meta_title": {
+            "alias": {
                 required: true,
-            },
-            "meta_key": {
-                required: true,
-            },
-            "category": {
-                required: true,
-            },
-            "meta_des": {
-                required: true,
-            },
+            }
         },
         messages: {
-            "image": {
-                required: 'chưa chọn ảnh đại diện',
+            "name": {
+                required: "Vui lòng nhập tên tag",
             },
-            "title": {
-                required: "Chưa nhập H1 bài viết",
-            },
-            "meta_title": {
-                required: "Chưa nhập title bài viết",
-            },
-            "meta_key": {
-                required: "Chưa nhập keyword bài viết",
-            },
-            "category": {
-                required: "Chưa chọn chuyên mục bài viết",
-            },
-            "meta_des": {
-                required: "Chưa nhập description",
-            },
+            "alias": {
+                required: "Vui lòng nhập url tag",
+            }
         },
         submitHandler: function(form) {
             var data = new FormData($("#form")[0]);
             data.append("content", CKEDITOR.instances.editor.getData());
-            data.append("sapo", CKEDITOR.instances.sapo.getData());
             $.ajax({
-                url: '/admin/ajax_add_blog',
+                url: '/admin/ajax_add_tag',
                 type: "POST",
                 cache: false,
                 contentType: false,
@@ -352,7 +277,7 @@
                         swal({
                             title: "Thất bại",
                             type: "error",
-                            text: "URL bài viết đã tồn tại"
+                            text: "Tag đã tồn tại"
                         });
                     } else {
                         swal({
@@ -369,25 +294,4 @@
             return false;
         }
     });
-    // $("#category").change(function(e) {
-    //     var id_error = $(this).val();
-    //     $.ajax({
-    //         type: "post",
-    //         url: "/Error_ctr/get_error",
-    //         data: {
-    //             "id": id_error
-    //         },
-    //         success: function(data) {
-    //             data = JSON.parse(data.replace('gi', ''));
-    //             if (data.length > 0) {
-    //                 var i = 0;
-    //                 var html = "<option value=''></option>";
-    //                 for (i = 0; i < data.length; i++) {
-    //                     html = html + `<option value="` + data[i].id + `">` + data[i].name + `</option>`;
-    //                 }
-    //                 $('#ls_error').html(html);
-    //             }
-    //         }
-    //     });
-    // });
 </script>

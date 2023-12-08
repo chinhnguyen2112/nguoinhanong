@@ -75,6 +75,25 @@
   </script>
   <noscript><img style="display:none" src="https://www.facebook.com/tr?id=327353239770086&ev=PageView&noscript=1"></noscript>
   <!-- End Meta Pixel Code -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Người Nhà Nông",
+      "alternateName": "Người Nhà Nông",
+      "url": "https://nguoinhanong.vn/",
+      "logo": "https://nguoinhanong.vn/images/logo.png",
+      "sameAs": [
+        "https://nguoinhanong.vn/",
+        "https://twitter.com/nguoinhanongvn",
+        "https://www.youtube.com/@nguoinhanongvn",
+        "https://www.pinterest.com/nguoinhanongvn/",
+        "https://soundcloud.com/nguoinhanongvn85",
+        "https://nguoinhanongvn.tumblr.com/"
+      ]
+    }
+  </script>
+
 </head>
 
 <body>

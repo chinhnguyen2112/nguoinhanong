@@ -68,6 +68,16 @@ $route['admin/list_chuyenmuc/(:num)'] = 'Admin/list_chuyenmuc';
 $route['admin/add_page'] = 'Admin/add_page';
 $route['admin/list_page'] = 'Admin/list_page';
 
+$route['admin/add_tag'] = 'Admin/view_add_tag';
+$route['admin/ajax_add_tag'] = 'Admin/ajax_add_tag';
+$route['admin/list_tag'] = 'Admin/list_tag';
+$route['admin/list_tag/(:num)'] = 'Admin/list_tag';
+
+$route['admin/down'] = 'Admin/view_down';
+$route['admin/ajax_down'] = 'Admin/ajax_down';
+$route['admin/list_down'] = 'Admin/list_down';
+
+
 //search
 $route['result_search'] = 'Home/view_result_search';
 
